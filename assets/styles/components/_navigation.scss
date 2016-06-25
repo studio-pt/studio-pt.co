@@ -1,0 +1,55 @@
+// Navigation
+
+.nav {
+  font-size: 0;
+  > li {
+    display: inline-block;
+    a {
+      padding: 10px;
+      &:hover {
+        color: #b4b4b4;
+      }
+    }
+    &.active {
+      > a {
+        color: #b4b4b4;
+      }
+    }
+  }
+}
+
+.nav-primary {
+  @include screen(xs) {
+    position: relative;
+    z-index: 5;
+    background: #fff;
+    .nav {
+      @include clearfix;
+      > li {
+        font-weight: bold;
+        float: left;
+        > a {
+          padding: 10px 15px;
+        }
+      }
+    }
+    &.is-stucked {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+  }
+  @include screen(sm, md, lg) {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 10;
+    .nav {
+      li {
+        font-size: 16px;
+      }
+    }
+  }
+}

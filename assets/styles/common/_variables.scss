@@ -1,0 +1,36 @@
+// Glyphicons font path
+$icon-font-path:                 "../fonts/";
+
+// Images path
+$images:                         "../images/";
+
+// Typography
+$font-family-sans-serif:         "Helvetica Neue", Calibri, "Gothic Medium BBB", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+$headings-font-family:           $font-family-sans-serif;
+$headings-font-weight:           400 !default;
+$headings-line-height:           1.4 !default;
+
+// Grid settings
+$main-sm-columns:                12;
+$sidebar-sm-columns:             4;
+$nav-gutter:                     20px;
+$nav-width:                      120px;
+
+// Colors
+$gray-base:                      #000;
+$gray-light:                     lighten($gray-base, 46.7%);
+$brand-primary:                  #000;
+$text-color:                     $gray-base;
+$text-color-inversed:            #fff;
+
+// Navs
+$nav-link-hover-bg:              transparent;
+
+// Dropdowns
+$dropdown-bg:                    transparent;
+$dropdown-border:                transparent;
+$dropdown-fallback-border:       #fff;
+$dropdown-divider-bg:            transparent;
+$dropdown-link-hover-bg:         transparent;
+$dropdown-link-active-bg:        transparent;
+$dropdown-link-active-color:     $gray-light;

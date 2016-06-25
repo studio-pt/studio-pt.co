@@ -1,0 +1,20 @@
+// basis
+body {
+  position: relative;
+  letter-spacing: .5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headings-font-family;
+}
+
+a:focus {
+  outline: none;
+}
+
+.main {
+  position: relative;
+  z-index: 4;
+  margin-top: $line-height-computed * 4;
+  margin-bottom: $line-height-computed * 4;
+}

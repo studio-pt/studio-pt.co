@@ -1,0 +1,11 @@
+// Header
+.brand {
+  @extend %hover-to-fade;
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  display: block;
+  z-index: 999;
+  width: 85px;
+  height: 40px;
+}
