@@ -1,1 +1,6 @@
-
+footer.content-info {
+  @include clearfix;
+  background: $brand-primary;
+  color: #fff;
+  a { color: #fff; }
+}

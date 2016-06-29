@@ -115,7 +115,7 @@
     });
 
     ias.extension(new IASSpinnerExtension({
-      src: '/wp-content/themes/asyl/dist/images/loading.svg', // optionally
+      src: '/assets/images/loading.svg', // optionally
     }));
 
     ias.on('rendered', function(items) {
@@ -131,10 +131,8 @@
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
   var ASYL = {
-    // All pages
     'common': {
       init: function() {
-        // JavaScript to be fired on all pages
         MAIN.setSVGFallback();
         MAIN.setSmoothScroll();
       },
@@ -147,12 +145,12 @@
       finalize: function() {
       }
     },
-    'archive': {
+    'post_type_archive': {
       finalize: function() {
         MAIN.setFreewall();
       }
     },
-    'single': {
+    'single_works': {
       finalize: function() {
         MAIN.setFreewall();
       }

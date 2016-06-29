@@ -2,7 +2,7 @@
 <?php
   $the_query = new WP_Query(array(
     'paged'       => get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1,
-    'post_type'   => 'post'
+    'post_type'   => 'works'
   ));
 ?>
 <?php if ( $the_query->have_posts() ) while ( $the_query->have_posts() ) : $the_query->the_post(); ?>

@@ -1,10 +1,9 @@
-<article <?php post_class('post-item'); ?>>
-  <a class='post-link' href="<?php the_permalink(); ?>">
-    <?php if ( has_post_thumbnail() ) : ?>
-      <?php the_post_thumbnail('square', array('class' => 'post-thumbnail')); ?>
-    <?php else: ?>
-      <img class='post-thumbnail' src='<?= get_template_directory_uri() . "/dist/images/post-thumbnail.png"; ?>'>
-    <?php endif; ?>
-    <span class="post-title"><?php the_title(); ?></span>
-  </a>
+<article <?php post_class(); ?>>
+  <header>
+    <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+    <?php /*get_template_part('templates/entry-meta');*/ ?>
+  </header>
+  <div class="entry-summary">
+    <?php the_excerpt(); ?>
+  </div>
 </article>

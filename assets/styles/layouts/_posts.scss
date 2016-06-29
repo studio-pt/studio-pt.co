@@ -141,16 +141,11 @@
 
 // Entry
 .entry-title {
-  font-size: $font-size-h2;
-  margin-bottom: $line-height-computed * 2;
-  @include screen(xs) {
-    font-size: $font-size-h3;
-    margin-bottom: $line-height-computed / 2;
-  }
+  font-size: $font-size-h4;
+  margin-bottom: $line-height-computed / 2;
 }
 
 .entry-meta,
-.entry-thumbnail,
 .entry-content,
 .entry-item {
   @include word-wrap;

@@ -8,13 +8,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $headings-font-family;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
 a:focus {
   outline: none;
 }
 
 .main {
   position: relative;
-  z-index: 4;
-  margin-top: $line-height-computed * 4;
-  margin-bottom: $line-height-computed * 4;
+  z-index: 1;
+  margin-top: $line-height-computed * 5;
+  margin-bottom: $line-height-computed * 5;
 }

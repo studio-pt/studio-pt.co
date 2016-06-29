@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="<?= get_template_directory_uri() . '/dist/images/favicon.png'; ?>" sizes="48x48" type="image/png">
+  <link rel="icon" href="/assets/images/favicon.png" sizes="48x48" type="image/png">
   <meta property="fb:app_id" content="1171632842868765">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
@@ -32,10 +32,10 @@
       } else if ( preg_match( $preg, $post->post_content, $imgurl ) && !is_archive()) {
         echo '<meta property="og:image" content="'; echo home_url(); echo $imgurl[2]; echo '">';echo "\n";
       } else {
-        echo '<meta property="og:image" content="'; echo get_template_directory_uri(); echo '/dist/images/og.png">'; echo "\n";
+        echo '<meta property="og:image" content="'; echo home_url(); echo '/assets/images/og.png">'; echo "\n";
       }
     } else {
-      echo '<meta property="og:image" content="'; echo get_template_directory_uri(); echo '/dist/images/og.png">'; echo "\n";
+      echo '<meta property="og:image" content="'; echo home_url(); echo '/assets/images/og.png">'; echo "\n";
     }
   ?>
 

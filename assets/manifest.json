@@ -21,7 +21,11 @@
       "bower": ["jquery"]
     }
   },
+  "paths": {
+    "source": "assets/",
+    "dist": "../../../../assets/"
+  },
   "config": {
-    "devUrl": "http://asyl.local"
+    "devUrl": "http://asyl.localhost"
   }
 }
