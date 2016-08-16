@@ -43,8 +43,8 @@
   }
   @include screen(sm, md, lg) {
     position: fixed;
-    top: 30px;
-    right: 30px;
+    top: 15px;
+    right: 15px;
     z-index: 10;
     .nav {
       li {

@@ -1,17 +1,4 @@
 // Grid system
-
-// .container {
-//   @media (min-width: $screen-sm-min) {
-//     width: $container-sm - ($nav-gutter * 4) - ($nav-width * 2);
-//   }
-//   @media (min-width: $screen-md-min) {
-//     width: $container-md - ($nav-gutter * 4) - ($nav-width * 2);
-//   }
-//   @media (min-width: $screen-lg-min) {
-//     width: $container-lg - ($nav-gutter * 4) - ($nav-width * 2);
-//   }
-// }
-
 .main {
   @include make-sm-column($main-sm-columns);
   .sidebar-primary & {

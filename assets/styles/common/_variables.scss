@@ -5,14 +5,16 @@ $icon-font-path:                 "../fonts/";
 $images:                         "../images/";
 
 // Typography
-$font-family-sans-serif:         "Helvetica Neue", Calibri, "Gothic Medium BBB", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
-$headings-font-family:           $font-family-sans-serif;
-$headings-font-weight:           400 !default;
-$headings-line-height:           1.4 !default;
+$font-family-sans-serif:         "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", Calibri, "Gothic Medium BBB", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+$headings-font-family:           "Helvetica Neue", "Helvetica", Calibri, "Gothic Medium BBB", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
+$headings-font-weight:           500;
+$headings-line-height:           1.4;
 
 // Grid settings
 $main-sm-columns:                12;
 $sidebar-sm-columns:             4;
+$grid-columns:                   12;
+$grid-gutter-width:              40px;
 $nav-gutter:                     20px;
 $nav-width:                      120px;
 

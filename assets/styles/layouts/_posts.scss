@@ -6,31 +6,9 @@
   visibility: hidden;
 }
 
-.post {
-  & + .posts-sm {
-    margin-top: 60px;
-  }
-  & + .posts-lg {
-    margin-top: 200px;
-  }
-}
-
-.posts-sm {
-  .post-item {
-    width: 50%; // 2col
-  }
-}
-
-.posts-lg {
-  .post-item {
-    width: 25%; // 4col
-  }
-}
-
-.single {
-  .posts-lg .post-item {
-    width: 20%; // 4col
-  }
+.post-item {
+  float: left;
+  width: 25%;
 }
 
 .home, .archive {
