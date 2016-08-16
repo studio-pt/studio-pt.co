@@ -74,7 +74,7 @@
   position: relative;
   background: #000;
   text-align: center;
-  @include screen(sm, md, lg) {
+  @media (min-width: $screen-xs) {
     &:hover {
       .post-thumbnail {
         opacity: .5;
@@ -87,10 +87,8 @@
 }
 
 .post-thumbnail {
-  @include screen(xs) {
-    opacity: .5;
-  }
-  @include screen(sm, md, lg) {
+  opacity: .5;
+  @media (max-width: $screen-xs-max) {
     transition: opacity .1s linear;
     opacity: 1;
   }
@@ -104,10 +102,10 @@
   text-align: center;
   color: #fff;
   transform: translate(-50%, -50%);
-  @include screen(xs) {
+  @media (max-width: $screen-xs-max) {
     font-size: $font-size-small;
   }
-  @include screen(sm, md, lg) {
+  @media (min-width: $screen-xs) {
     transition: opacity .1s linear;
     opacity: 0;
   }
@@ -128,15 +126,15 @@
 .entry-item {
   @include word-wrap;
   margin-bottom: $line-height-computed * 3;
-  @include screen(xs) { margin-bottom: $line-height-computed; }
+  @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
 }
 
 .entry-item {
   margin-bottom: $line-height-computed * 3;
-  @include screen(xs) { margin-bottom: $line-height-computed; }
+  @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
   &.caption {
     margin-top: -#{$line-height-computed * 2.5};
-    @include screen(xs) { margin-top: -#{$line-height-computed / 2}; }
+    @media (max-width: $screen-xs-max) { margin-top: -#{$line-height-computed / 2}; }
     font-size: $font-size-small;
   }
   &.image {

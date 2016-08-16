@@ -12,7 +12,10 @@
   position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
 	height: 0;
-  margin-bottom: $grid-gutter-width;
+  margin-bottom: $grid-gutter-width / 2;
+  @media (min-width: $screen-sm) {
+    margin-bottom: $grid-gutter-width;
+  }
 }
 
 .topic-item-title {

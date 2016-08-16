@@ -31,35 +31,3 @@
   word-break: break-all;
   word-wrap: break-word;
 }
-
-// Mixins
-@mixin respond-to($media) {
-  /* Landscape phones and down */
-  @if $media == xs {
-    @media (max-width: $screen-sm - 1) { @content; }
-  }
-  /* Landscape phone to portrait tablet */
-  @else if $media == sm {
-    @media (min-width: $screen-sm) and (max-width: $screen-md - 1) {@content; }
-  }
-  /* Portrait tablet to landscape and desktop */
-  @else if $media == md {
-    @media (min-width: $screen-md) and (max-width: $screen-lg - 1) { @content; }
-  }
-  /* desktop and large desktop */
-  @else if $media == lg {
-    @media (min-width: $screen-lg) { @content; }
-  }
-}
-
-@mixin screen($media...) {
-  @each $mediatype in $media {
-    @include respond-to($mediatype) {@content;}
-  }
-}
-
-@mixin orient($orientation: landscape) {
-  @media (orientation : $orientation) {
-    @content;
-  }
-}
