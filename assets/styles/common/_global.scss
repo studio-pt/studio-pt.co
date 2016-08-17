@@ -31,3 +31,22 @@
   word-break: break-all;
   word-wrap: break-word;
 }
+
+%row-gapless {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+%column-gapless {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+// Mixins
+@mixin grid-gapless() {
+  @extend %row-gapless;
+  & > [class^="col-"],
+  & > [class*=" col-"] {
+    @extend %column-gapless;
+  }
+}
