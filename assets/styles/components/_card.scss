@@ -1,12 +1,4 @@
-// Topics
-.topics {
-  @include make-row();
-  .topic {
-    @include make-xs-column(12);
-    @include make-sm-column(6);
-  }
-}
-
+// Card
 .card {
   position: relative;
 	height: 0;
@@ -37,6 +29,17 @@
   transition: all .2s ease-in-out;
 }
 
+.card-title {
+  line-height: 1.6;
+  &.middle-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
 .card-foreground {
   position: absolute;
   width: 100%;
@@ -45,7 +48,6 @@
   background: rgba(#000, .5);
   opacity: 0;
   color: #fff;
-  line-height: 1.6;
   padding: $grid-gutter-width / 2;
   @media (min-width: $screen-sm) {
     padding: $grid-gutter-width;

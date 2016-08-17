@@ -7,14 +7,16 @@
     $title = get_sub_field('title');
     $url = get_sub_field('url');
   ?>
-  <div class="topic">
+  <div class="topic-item">
     <div class="card card-vista">
-      <a class="card-foreground" href="<?php echo $url; ?>"><?php echo $title ?></a>
+      <a class="card-foreground" href="<?php echo $url; ?>">
+        <div class="card-title"><?php echo $title ?></div>
+      </a>
       <div class="card-background" style="background-image:url(<?php echo $image[0]; ?>)"></div>
     </div>
   </div>
   <?php endwhile; ?>
 </div>
 <?php else: ?>
-    <!-- no layouts found -->
+  <!-- no layouts found -->
 <?php endif; ?>

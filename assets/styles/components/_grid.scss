@@ -1,14 +1,13 @@
 // Grid system
-// .row {
-//   margin-left: 0;
-//   margin-right: 0;
-// }
-
 .container, .container-fluid {
   @media (min-width: $screen-sm) {
     padding-left:  $grid-gutter-width;
     padding-right: $grid-gutter-width;
   }
+}
+
+.container-narrow {
+  //max-width: 640px;
 }
 
 .main {

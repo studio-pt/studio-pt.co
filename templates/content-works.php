@@ -1,10 +1,16 @@
 <article <?php post_class('post-item'); ?>>
-  <a class='post-link' href="<?php the_permalink(); ?>">
-    <?php if ( has_post_thumbnail() ) : ?>
-      <?php the_post_thumbnail('square', array('class' => 'post-thumbnail')); ?>
+  <div class="card card-square">
+    <a class="card-foreground" href="<?php the_permalink(); ?>">
+      <div class="card-title middle-center"><?php the_title(); ?></div>
+    </a>
+    <?php
+      if ( has_post_thumbnail() ) :
+        $img_id = get_post_thumbnail_id ();
+        $img_url = wp_get_attachment_image_src ($img_id, true);
+        ?>
+      <div class="card-background" style="background-image:url(<?php echo $img_url[0]; ?>)"></div>
     <?php else: ?>
-      <img class='post-thumbnail' src='<?= home_url() . "/assets/images/post-thumbnail.png"; ?>'>
+      <div class="card-background" style="background-image:url(<?= home_url() . "/assets/images/post-thumbnail.png"; ?>)"></div>
     <?php endif; ?>
-    <span class="post-title"><?php the_title(); ?></span>
-  </a>
+  </div>
 </article>

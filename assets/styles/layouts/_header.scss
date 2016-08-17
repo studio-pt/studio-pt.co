@@ -3,9 +3,10 @@
   @extend %hover-to-fade;
   position: fixed;
   z-index: 2;
-  top: 20px;
-  left: $grid-gutter-width / 2;
+  top: $header-gutter / 2;
+  left: $header-gutter / 2;
   @media (min-width: $screen-sm) {
-    left: $grid-gutter-width;
+    top: $header-gutter;
+    left: $header-gutter;
   }
 }

@@ -15,6 +15,7 @@ $main-sm-columns:                12;
 $sidebar-sm-columns:             4;
 $grid-columns:                   12;
 $grid-gutter-width:              40px;
+$header-gutter:                  $grid-gutter-width;
 
 // Colors
 $gray-base:                      #000;
@@ -24,6 +25,7 @@ $text-color:                     $gray-base;
 $text-color-inversed:            #fff;
 
 // Navs
+$nav-font-family:                $headings-font-family;
 $nav-link-hover-bg:              transparent;
 
 // Dropdowns

@@ -1,53 +1,25 @@
 // Navigation
-
 .nav {
-  font-size: 0;
-  > li {
-    display: inline-block;
-    a {
-      padding: 10px;
-      &:hover {
-        color: #b4b4b4;
-      }
-    }
-    &.active {
-      > a {
-        color: #b4b4b4;
-      }
-    }
-  }
+  font-family: $nav-font-family;
 }
 
 .nav-primary {
-  @media (max-width: $screen-xs-max) {
-    position: relative;
-    z-index: 5;
-    background: #fff;
-    .nav {
-      @include clearfix;
-      > li {
-        font-weight: bold;
-        float: left;
-        > a {
-          padding: 10px 15px;
-        }
-      }
-    }
-    &.is-stucked {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 10;
-    }
-  }
   position: fixed;
-  top: 15px;
-  right: 20px;
-  z-index: 10;
-  .nav {
-    li {
-      font-size: 16px;
-    }
+  z-index: 2;
+  top: $header-gutter / 2;
+  right: $header-gutter / 2;
+  @media (min-width: $screen-sm) {
+    top: $header-gutter;
+    right: $header-gutter;
+  }
+}
+
+#menu-primary {
+  margin-top: -10px;
+  > li > a {
+    font-size: $font-size-large;
+    font-weight: 500;
+    text-align: right;
+    padding: 10px 0;
   }
 }

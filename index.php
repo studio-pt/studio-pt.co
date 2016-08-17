@@ -1,5 +1,7 @@
-<?php if (!is_home() || !is_front_page() ) : ?>
-  <?php get_template_part('templates/page', 'header'); ?>
+<?php if (!is_home() || !is_front_page()) : ?>
+  <?php if (!is_post_type_archive()) : ?>
+    <?php get_template_part('templates/page', 'header'); ?>
+  <?php endif; ?>
 <?php endif; ?>
 
 <?php if (!have_posts()) : ?>

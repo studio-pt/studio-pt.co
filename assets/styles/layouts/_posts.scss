@@ -1,33 +1,16 @@
 .posts {
-  @include clearfix;
-}
-
-.css3Dtransform .post-item {
-  visibility: hidden;
-}
-
-.post-item {
-  float: left;
-  width: 25%;
-}
-
-.home, .archive {
-  .main {
-    .post-item {
-      &.emphasize {
-        width: 100%;
-      }
-    }
+  @include make-row();
+  .post-item {
+    @include make-xs-column(12);
+    @include make-sm-column(6);
+    @include make-md-column(4);
+    @include make-lg-column(3);
   }
 }
 
 @keyframes spin {
-  from {
-    transform:rotate(0deg);
-  }
-  to {
-    transform:rotate(360deg);
-  }
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
 }
 
 .ias-spinner {
@@ -44,6 +27,7 @@
   }
 }
 
+/*
 .post-item {
   overflow: hidden;
   &[data-state="init"] {
@@ -65,55 +49,7 @@
     }
   }
 }
-
-.post-link {
-  // width: 100%;
-  // height: 0;
-  // padding-bottom: 100%;
-  display: block;
-  position: relative;
-  background: #000;
-  text-align: center;
-  @media (min-width: $screen-xs) {
-    &:hover {
-      .post-thumbnail {
-        opacity: .5;
-      }
-      .post-title {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-.post-thumbnail {
-  opacity: .5;
-  @media (max-width: $screen-xs-max) {
-    transition: opacity .1s linear;
-    opacity: 1;
-  }
-}
-
-.post-title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  transform: translate(-50%, -50%);
-  @media (max-width: $screen-xs-max) {
-    font-size: $font-size-small;
-  }
-  @media (min-width: $screen-xs) {
-    transition: opacity .1s linear;
-    opacity: 0;
-  }
-}
-
-.post-thumbnail {
-  backface-visibility: hidden;
-}
+*/
 
 // Entry
 .entry-title {
