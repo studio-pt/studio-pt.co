@@ -1,4 +1,4 @@
-<article <?php post_class('post-item'); ?>>
+<article <?php post_class(); ?>>
   <div class="card card-square">
     <a class="card-foreground" href="<?php the_permalink(); ?>">
       <span class="card-title middle-center"><?php the_title(); ?></span>
