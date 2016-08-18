@@ -3,8 +3,13 @@
   @extend %hover-to-fade;
   position: fixed;
   z-index: 2;
-  top: $header-gutter / 2;
-  left: $header-gutter / 2;
+  @media (max-width: $screen-xs-max) {
+    top: $header-gutter / 2;
+    left: 50%;
+    > img {
+      transform: translateX(-50%);
+    }
+  }
   @media (min-width: $screen-sm) {
     top: $header-gutter;
     left: $header-gutter;

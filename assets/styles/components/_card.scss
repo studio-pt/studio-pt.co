@@ -12,7 +12,8 @@
   &.card-standard { padding-bottom: 75%; }    /* 4:3 */
   &.card-vista    { padding-bottom: 56.25%; } /* 16:9 */
   &.card-scope    { padding-bottom: 41.67%; } /* 12:5 */
-  &:hover {
+  &:hover,
+  &:focus {
     .card-foreground {
       opacity: 1;
       color: #fff;
@@ -30,6 +31,7 @@
 }
 
 .card-title {
+  display: block;
   line-height: 1.6;
   &.middle-center {
     position: absolute;

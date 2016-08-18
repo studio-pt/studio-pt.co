@@ -20,5 +20,8 @@ a:focus {
 .main {
   position: relative;
   z-index: 1;
-  margin-top: 120px;
+  margin-top: 75px;
+  @media (min-width: $screen-sm) {
+    margin-top: 120px;
+  }
 }

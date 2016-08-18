@@ -1,7 +1,7 @@
 <article <?php post_class('post-item'); ?>>
   <div class="card card-square">
     <a class="card-foreground" href="<?php the_permalink(); ?>">
-      <div class="card-title middle-center"><?php the_title(); ?></div>
+      <span class="card-title middle-center"><?php the_title(); ?></span>
     </a>
     <?php
       if ( has_post_thumbnail() ) :
