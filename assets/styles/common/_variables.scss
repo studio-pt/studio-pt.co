@@ -5,6 +5,7 @@ $icon-font-path:                 "../fonts/";
 $images:                         "../images/";
 
 // Typography
+$line-height-base:               1.7142857143; //24/14
 $font-family-sans-serif:         "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", Calibri, "Gothic Medium BBB", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
 $headings-font-family:           "Helvetica Neue", "Helvetica", Calibri, "Gothic Medium BBB", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
 $headings-font-weight:           500;
@@ -23,9 +24,12 @@ $gray-light:                     lighten($gray-base, 46.7%);
 $brand-primary:                  #221FFF;
 $text-color:                     $gray-base;
 $text-color-inversed:            #fff;
+$link-hover-color:               $text-color;
+$link-hover-decoration:          none;
 
 // Navs
 $nav-font-family:                $headings-font-family;
+$nav-link-padding:               0;
 $nav-link-hover-bg:              transparent;
 
 // Dropdowns

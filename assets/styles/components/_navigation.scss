@@ -1,6 +1,12 @@
 // Navigation
 .nav {
   font-family: $nav-font-family;
+  > li {
+    @include clearfix;
+    > a {
+      padding: 0;
+    }
+  }
 }
 
 .nav-primary {
@@ -12,14 +18,80 @@
     top: $header-gutter;
     right: $header-gutter;
   }
+  li {
+    text-align: right;
+    &.active {
+      > a { color: $text-color; }
+    }
+    a {
+      @extend %break-word;
+      font-size: $font-size-h3;
+      line-height: 1;
+      font-weight: 500;
+      color: $link-color;
+      padding: 10px 0;
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
 }
 
-#menu-primary {
-  margin-top: -10px;
-  > li > a {
-    font-size: $font-size-large;
-    font-weight: 500;
-    text-align: right;
-    padding: 10px 0;
+%ddmenu-base {
+  overflow: hidden;
+  display: block;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+}
+
+%ddmenu-is-collapsed {
+  height: 0;
+}
+
+%ddmenu-is-expanded {
+  height: auto;
+}
+
+// The dropdown menu (ul)
+.dropdown-menu {
+  @extend %ddmenu-base;
+  @extend %ddmenu-is-collapsed;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: none;
+  > li {
+    &:first-child {
+      margin-top: 10px;
+      > a { padding-top: 0; }
+    }
+    &:last-child {
+      margin-bottom: 10px;
+      > a { padding-bottom: 0; }
+    }
+    > a {
+      border-right: 1px solid $brand-primary;
+      padding: 10px 10px 10px 0;
+    }
+  }
+}
+
+.caret {
+  display: none;
+}
+
+.current-menu-parent {
+  > .dropdown-menu {
+    @extend %ddmenu-is-expanded;
+  }
+}
+
+// State for the dropdown
+.dropdown {
+  &.open {
+    > .dropdown-menu {
+      @extend %ddmenu-is-expanded;
+    }
   }
 }

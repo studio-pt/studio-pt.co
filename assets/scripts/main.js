@@ -147,12 +147,12 @@
     },
     'post_type_archive': {
       finalize: function() {
-        MAIN.setFreewall();
+        //MAIN.setFreewall();
       }
     },
     'single_works': {
       finalize: function() {
-        MAIN.setFreewall();
+        //MAIN.setFreewall();
       }
     }
   };

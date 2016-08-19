@@ -1,22 +1,4 @@
 // basis
-body {
-  position: relative;
-  letter-spacing: .5px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: $headings-font-family;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-a:focus {
-  outline: none;
-}
-
 .main {
   position: relative;
   z-index: 1;

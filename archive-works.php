@@ -8,9 +8,9 @@
   <p><?php _e('Sorry, no results were found.', 'sage'); ?></p>
 <?php endif; ?>
 
-<div class="posts-container">
+<div class="works-container headless">
   <?php while (have_posts()) : the_post(); ?>
-    <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
+    <?php get_template_part('templates/content', 'works'); ?>
   <?php endwhile; ?>
 </div>
 

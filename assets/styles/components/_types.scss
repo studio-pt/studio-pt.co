@@ -1,11 +1,20 @@
 // Page Header
 
 .page-header {
-  // text-align: center;
+  text-align: center;
   border: none;
   padding: 0;
   > h1, h2, h3, h4, h5, h6 {
-    // font-size: $font-size-base;
-    // font-weight: bold;
+    font-size: $font-size-h3;
+  }
+}
+
+.main {
+  > .page-header {
+    //background: #0f0;
+    margin-top: 80px;
+    @media (min-width: $screen-sm) {
+      margin-top: -60px;
+    }
   }
 }

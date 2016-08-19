@@ -90,7 +90,8 @@ function display_sidebar() {
     is_tag(),
     is_single(),
     is_page(),
-    is_post_type_archive('works'),
+    is_tax(),
+    is_post_type_archive()
     //is_page_template('template-custom.php'),
   ]);
 

@@ -1,5 +1,69 @@
 // Util
 
+// Extensions
+%img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+%list-unstyled {
+  list-style: none;
+  padding-left: 0;
+}
+
+%list-horizontal {
+  > li {
+    display: inline-block;
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+%hover-to-fade {
+  transition: opacity .1s linear;
+  &:hover {
+    opacity: .5;
+  }
+}
+
+%break-all {
+  white-space: normal;
+  word-break: break-all;
+}
+
+%break-word {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+%word-wrap {
+  white-space: normal;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+%row-gapless {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+%column-gapless {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+// Mixins
+@mixin grid-gapless() {
+  @extend %row-gapless;
+  & > [class^="col-"],
+  & > [class*=" col-"] {
+    @extend %column-gapless;
+  }
+}
+
 @mixin word-wrap() {
   -ms-word-break: break-all;
   word-break: break-all;

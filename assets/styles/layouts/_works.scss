@@ -1,6 +1,6 @@
-.works {
+.works-container {
   @include make-row();
-  .work {
+  .works-item {
     @include make-xs-column(12);
     @include make-sm-column(6);
     @include make-md-column(4);

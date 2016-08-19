@@ -1,3 +1,14 @@
+.posts-container {
+  @include make-row();
+  .posts-item {
+    @include make-xs-column(12);
+    @include make-sm-column(8);
+    @include make-sm-column-offset(2);
+    @include make-lg-column(6);
+    @include make-lg-column-offset(3);
+  }
+}
+
 @keyframes spin {
   from { transform:rotate(0deg); }
   to { transform:rotate(360deg); }
@@ -44,7 +55,7 @@
 // Entry
 .entry-title {
   font-size: $font-size-h4;
-  margin-bottom: $line-height-computed / 2;
+  //margin-bottom: $line-height-computed / 2;
 }
 
 .entry-meta,
