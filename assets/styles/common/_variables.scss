@@ -5,11 +5,16 @@ $icon-font-path:                 "../fonts/";
 $images:                         "../images/";
 
 // Typography
-$line-height-base:               1.7142857143; //24/14
 $font-family-sans-serif:         "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", Calibri, "Gothic Medium BBB", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
 $headings-font-family:           "Helvetica Neue", "Helvetica", Calibri, "Gothic Medium BBB", "游ゴシック体", "Yu Gothic", YuGothic, sans-serif;
 $headings-font-weight:           500;
 $headings-line-height:           1.4;
+$font-size-base:                 14px;
+$line-height-base:               1.7142857143; //24/14
+$font-size-h1:                   floor(($font-size-base * 2.15)); // ~30px
+$font-size-h2:                   ceil(($font-size-base * 1.7)); // ~24px
+$font-size-h3:                   floor(($font-size-base * 1.42)); // ~20px
+
 
 // Grid settings
 $main-sm-columns:                12;
@@ -21,11 +26,12 @@ $header-gutter:                  $grid-gutter-width;
 // Colors
 $gray-base:                      #000;
 $gray-light:                     lighten($gray-base, 46.7%);
-$brand-primary:                  #221FFF;
+$brand-primary:                  #221fff;
 $text-color:                     $gray-base;
 $text-color-inversed:            #fff;
 $link-hover-color:               $text-color;
 $link-hover-decoration:          none;
+$base-border-color:              #ddd;
 
 // Navs
 $nav-font-family:                $headings-font-family;

@@ -1,10 +1,45 @@
 // basis
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 105px;
+  letter-spacing: .5px;
+}
+
 .main {
   position: relative;
   z-index: 1;
-  margin-top: 75px;
+  margin-top: 100px;
   @media (min-width: $screen-sm) {
     margin-top: 120px;
+  }
+}
+
+.copyright {
+  font-family: $nav-font-family;
+  font-size: $font-size-large;
+  position: fixed;
+  z-index: 2;
+  bottom: $header-gutter;
+  right: $header-gutter;
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+.pagetop {
+  @extend %hover-to-fade;
+  font-size: $font-size-large;
+  position: fixed;
+  z-index: 2;
+  bottom: $header-gutter;
+  right: $header-gutter;
+  @media (max-width: $screen-xs-max) {
+    display: none;
   }
 }
 

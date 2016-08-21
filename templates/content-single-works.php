@@ -2,44 +2,129 @@
   <article <?php post_class(); ?>>
     <header>
       <h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php get_template_part('templates/entry-meta-works'); ?>
+      <div class="entry-meta">
+        <ul class="entry-attributes">
+        <?php // Summary
+          if (get_field('summary')) :
+            $summary = get_field('summary');
+            echo '<li>' . $summary . '</li>';
+          endif;
+        ?>
+        <?php // Credits
+          if (have_rows('credits')):
+            while (have_rows('credits')) : the_row();
+              if (get_row_layout() == 'credit'):
+                echo '<li><dl>';
+                $role = get_sub_field('role');
+                echo '<dt>' . $role . '</dt>';
+                if (get_sub_field('person')):
+                  $persons = get_sub_field('person');
+                  foreach ($persons as $person) :
+                    echo '<dd>';
+                    echo '<a href="'. esc_url(home_url('/')) . get_post_type(get_the_ID()) . '/?' . $person->taxonomy . '=' . $person->slug  . '">';
+                    echo $person->name;
+                    echo '</a>';
+                    echo '</dd>';
+                  endforeach;
+                endif;
+                echo '</dl></li>';
+              endif;
+            endwhile;
+          endif;
+        ?>
+        <?php
+          if (get_the_terms($post->ID, 'y')) :
+            $years = get_the_terms($post->ID, 'y');
+            foreach ($years as $year) :
+              echo '<li><a href="'. esc_url(home_url('/')) . get_post_type(get_the_ID()) . '/?' . $year->taxonomy . '=' . $year->slug  . '">';
+              echo $year->name;
+              echo '</a></li>';
+            endforeach;
+          endif;
+        ?>
+        <?php
+          if( have_rows('client') ):
+            echo '<li><dl><dt>Client</dt>';
+            while ( have_rows('client') ) : the_row();
+              echo '<dd>' . the_sub_field('name') . '</dd>';
+            endwhile;
+            echo '</dl></li>';
+          endif;
+        ?>
+        </ul>
+        <?php
+          $genre = get_the_term_list($post->ID, 'g', '<li>', '</li><li>', '</li>');
+          if ($genre) :
+            echo '<ul class="entry-genres">'. $genre . '</ul>';
+          endif;
+        ?>
+      </div>
     </header>
     <div class="entry-content">
-      <?php the_content(); ?>
-    </div>
-
-    <?php
-      // check if the flexible content field has rows of data
-      if( have_rows('work') ):
-           // loop through the rows of data
-          while ( have_rows('work') ) : the_row();
-
-              if( get_row_layout() == 'image' ):
-                $id = get_sub_field('image');
-                $size = 'large';
-                $image = wp_get_attachment_image_src( $id, $size );
-                echo '<div class="entry-item image">';
-              	echo '<img src="' . $image[0] . '" alt="">';
-                echo '</div>';
-
-              elseif( get_row_layout() == 'video' ):
-                $caption = get_sub_field('video');
-                echo '<div class="entry-item video">' . $video . '</div>';
-
-              elseif( get_row_layout() == 'widget' ):
-                $widget = get_sub_field('widget');
-                echo '<div class="entry-item widget">' . $widget . '</div>';
-
-              elseif( get_row_layout() == 'caption' ):
-                $caption = get_sub_field('caption');
-                echo '<div class="entry-item caption">' . $caption . '</div>';
-
-              endif;
+      <?php // Items
+        if( have_rows('item') ):
+          while ( have_rows('item') ) : the_row();
+            if( get_row_layout() == 'image' ):
+              $image = get_sub_field('image');
+              echo '<div class="entry-item image">';
+            	echo '<img src="' . $image['sizes']['large'] . '" alt="">';
+              echo '</div>';
+            elseif( get_row_layout() == 'youtube' ):
+              $iframe = get_sub_field('youtube');
+              preg_match('/src="(.+?)"/', $iframe, $matches);
+              $src = $matches[1];
+              // add extra params to iframe src
+              $params = array(
+                'showinfo'  => 0,
+                'hd'        => 1,
+                'autohide'  => 1,
+                'rel'       => 0
+              );
+              $new_src = add_query_arg($params, $src);
+              $iframe = str_replace($src, $new_src, $iframe);
+              // add extra attributes to iframe html
+              $attributes = 'frameborder="0"';
+              $iframe = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
+              echo '<div class="entry-item oembed">' . $iframe . '</div>';
+            elseif( get_row_layout() == 'vimeo' ):
+              $iframe = get_sub_field('vimeo');
+              preg_match('/src="(.+?)"/', $iframe, $matches);
+              $src = $matches[1];
+              // add extra params to iframe src
+              $params = array(
+                'title'     => 0,
+                'byline'    => 0,
+                'badge'     => 0,
+                'portrait'  => 0,
+                'color'     => '221fff'
+              );
+              $new_src = add_query_arg($params, $src);
+              $iframe = str_replace($src, $new_src, $iframe);
+              // add extra attributes to iframe html
+              $attributes = 'frameborder="0"';
+              $iframe = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $iframe);
+              echo '<div class="entry-item oembed">' . $iframe . '</div>';
+            elseif( get_row_layout() == 'caption' ):
+              $caption = get_sub_field('caption');
+              echo '<div class="entry-item caption"><small>' . $caption . '</small></div>';
+            elseif( get_row_layout() == 'editor' ):
+              $editor = get_sub_field('editor');
+              echo '<div class="entry-item editor">' . $editor . '</div>';
+            elseif( get_row_layout() == 'video' ):
+              $video = get_sub_field('video');
+              $poster = get_sub_field('poster');
+              echo '<div class="entry-item video">';
+              echo '<video poster="' . $poster['sizes']['large'] . '" autoplay loop controls>';
+              echo '<source src="' . $video['url'] . '" type="' . $video['mime_type'] . '">';
+              echo '</video>';
+              echo '</div>';
+            endif;
           endwhile;
-      else :
-          // no layouts found
-      endif;
-    ?>
+        else :
+            // no layouts found
+        endif;
+      ?>
+    </div>
 
     <footer>
       <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>

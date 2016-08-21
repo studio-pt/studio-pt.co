@@ -23,6 +23,23 @@
     }
   };
 
+  MAIN.setPageTop = function()
+  {
+    var p = $('.pagetop'),
+        c = $('.copyright'),
+        w = $(window);
+    w.on('scroll', function(){
+      t = w.scrollTop();
+      if (t === 0) {
+        p.hide();
+        c.show();
+      } else if (t >= 1) {
+        p.show();
+        c.hide();
+      }
+    }).trigger('scroll');
+  };
+
   MAIN.setSmoothScroll = function()
   {
     $('a[href*="#"]:not([href="#"])').click(function () {
@@ -134,6 +151,7 @@
     'common': {
       init: function() {
         MAIN.setSVGFallback();
+        MAIN.setPageTop();
         MAIN.setSmoothScroll();
       },
       finalize: function() {

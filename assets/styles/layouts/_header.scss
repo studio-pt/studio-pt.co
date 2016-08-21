@@ -3,6 +3,7 @@
   @extend %hover-to-fade;
   position: fixed;
   z-index: 2;
+  left: 50%;
   @media (max-width: $screen-xs-max) {
     top: $header-gutter / 1.5;
     left: 50%;
