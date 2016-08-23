@@ -12,6 +12,22 @@ small {
   line-height: $line-height-small;
 }
 
-a:focus {
+a {
   outline: none;
+  &:hover {
+    color: $link-hover-color;
+  }
+  &:visited, &:focus {
+    color: $link-color;
+  }
+}
+
+dt {
+  font-weight: 500;
+}
+
+.dl-horizontal {
+  > dt {
+    text-align: left;
+  }
 }

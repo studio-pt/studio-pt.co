@@ -16,9 +16,15 @@
     "freewall": "^1.0.5",
     "jquery-ias": "infinite-ajax-scroll#^2.2.1",
     "imagesloaded": "^4.1.0",
-    "scrollreveal": "^3.1.4"
+    "scrollreveal": "^3.1.4",
+    "maplace-js": "^0.2.7"
   },
   "overrides": {
+    "maplace-js": {
+      "main": [
+        "./dist/maplace.min.js"
+      ]
+    },
     "jquery-ias": {
       "main": [
         "./src/callbacks.js",
@@ -29,7 +35,9 @@
     "bootstrap-sass": {
       "main": [
         "./assets/stylesheets/_bootstrap.scss",
-        "./assets/javascripts/bootstrap/dropdown.js"
+        "./assets/javascripts/bootstrap/dropdown.js",
+        "./assets/javascripts/bootstrap/collapse.js",
+        "./assets/javascripts/bootstrap/transition.js"
       ],
       "_main": [
         "./assets/stylesheets/_bootstrap.scss",
@@ -52,8 +60,5 @@
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
       ]
     }
-  },
-  "devDependencies": {
-    "maplace-js": "maplace.js#^0.2.7"
   }
 }

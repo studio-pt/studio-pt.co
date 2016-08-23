@@ -23,6 +23,30 @@
     }
   };
 
+  MAIN.setMaplace = function()
+  {
+    console.log('loaded');
+    new Maplace({
+      map_div: '#gmaps',
+      locations: [
+        {
+          title: 'Asyl inc.',
+          lat: 35.6937166,
+          lon: 139.7607625,
+          zoom: 18
+        }
+      ],
+      map_options: {
+        set_center: [35.6937166, 139.7607625],
+        zoom: 17,
+        scrollwheel: false
+      },
+      styles: {
+        'Bluish': [{'stylers':[{'hue':'#007fff'},{'saturation':89}]},{'featureType':'water','stylers':[{'color':'#ffffff'}]},{'featureType':'administrative.country','elementType':'labels','stylers':[{'visibility':'off'}]}]
+      }
+    }).Load();
+  };
+
   MAIN.setPageTop = function()
   {
     var p = $('.pagetop'),
@@ -42,7 +66,7 @@
 
   MAIN.setSmoothScroll = function()
   {
-    $('a[href*="#"]:not([href="#"])').click(function () {
+    $('a[href*="#"]:not([href="#"]):not([data-toggle="collapse"])').click(function () {
       var href = $(this).attr('href'),
           target = $(href === '#' || href === '' ? 'html' : href),
           offset = -60,
@@ -171,6 +195,11 @@
     'single_works': {
       finalize: function() {
         //MAIN.setFreewall();
+      }
+    },
+    'contact': {
+      init: function() {
+        MAIN.setMaplace();
       }
     }
   };

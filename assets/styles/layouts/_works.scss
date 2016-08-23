@@ -1,8 +1,131 @@
-.works-container {
+.works-body {
   @include make-row();
   .works-item {
     @include make-xs-column(6);
     @include make-sm-column(4);
     @include make-lg-column(3);
+  }
+}
+
+.post-type-archive-works {
+  .page-header {
+    @media (min-width: $screen-sm) {
+      margin-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+.single-works {
+  .entry-body {
+    @extend %container-lg;
+  }
+  .entry-title {
+    @extend %container-xs;
+    text-align: center;
+    @media (min-width: $screen-sm) {
+      margin-top: 0;
+    }
+  }
+  .entry-meta {
+    margin-bottom: $line-height-computed * 2;
+    @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
+  }
+}
+
+.entry-genres {
+  text-align: center;
+  @extend %list-unstyled;
+  @extend %list-inline;
+  font-family: $headings-font-family;
+  > li {
+    margin-right: 1em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.entry-attributes {
+  text-align: center;
+  font-size: $font-size-small;
+  @extend %list-unstyled;
+  @extend %list-inline;
+  * { line-height: 1; }
+  > li {
+    margin-right: .5em;
+    padding-right: .5em;
+    border-right: 1px solid $base-border-color;
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+      border-right: none;
+    }
+    > dl {
+      @extend %dl-unstyled;
+      @extend %dl-inline;
+      > dt {
+        margin-right: .5em;
+        &:after {
+          display: inline-block;
+          content: ':';
+        }
+      }
+      > dd {
+        &:after {
+          display: inline-block;
+          content: ',';
+          margin-right: .5em;
+        }
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.entry-content,
+.entry-item {
+  @include word-wrap;
+  margin-bottom: $line-height-computed * 2;
+  @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
+}
+
+.entry-item {
+  margin-bottom: $line-height-computed * 2;
+  @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
+  &.editor {
+    @extend %container-sm;
+  }
+  &.caption {
+    text-align: center;
+    color: $gray-light;
+    margin-top: -#{$line-height-computed * 1.5};
+    margin-bottom: $line-height-computed * 1.5;
+    @media (max-width: $screen-xs-max) {
+      margin-top: -#{$line-height-computed / 2};
+      margin-bottom: $line-height-computed / 2;
+    }
+  }
+  &.image {
+    > img {
+      @extend %img-responsive;
+    }
+  }
+  &.oembed, &.video {
+    position: relative;
+	  padding-bottom: 56.25%; /* 16:9 */
+	  height: 0;
+    background: #000;
+    > iframe, > object, > embed, > video {
+      position: absolute;
+    	top: 0;
+    	left: 0;
+    	width: 100%;
+    	height: 100%;
+    }
   }
 }

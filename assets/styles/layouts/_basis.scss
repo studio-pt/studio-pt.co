@@ -6,16 +6,17 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 105px;
+  margin-bottom: ($grid-gutter-width * 2) + 25px; // 85;
   letter-spacing: .5px;
+  font-feature-settings: 'palt' 1;
 }
 
 .main {
   position: relative;
   z-index: 1;
-  margin-top: 100px;
+  margin-top: ($grid-gutter-width * 2) + 20px;
   @media (min-width: $screen-sm) {
-    margin-top: 120px;
+    margin-top: ($grid-gutter-width * 2) + 40px;
   }
 }
 
@@ -42,14 +43,3 @@ body {
     display: none;
   }
 }
-
-// .container-narrow {
-//   @include make-row();
-//   .page-header, .row-narrow {
-//     @include make-xs-column(12);
-//     @include make-sm-column(8);
-//     @include make-sm-column-offset(2);
-//     @include make-lg-column(6);
-//     @include make-lg-column-offset(3);
-//   }
-// }

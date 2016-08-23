@@ -17,7 +17,6 @@
   @media (min-width: $screen-sm) {
     top: $header-gutter;
     right: $header-gutter;
-    margin-top: -10px;
   }
   li {
     text-align: right;
@@ -84,7 +83,7 @@
 
 .current-menu-parent {
   > .dropdown-menu {
-    @extend %ddmenu-is-expanded;
+    //@extend %ddmenu-is-expanded;
   }
 }
 
@@ -95,4 +94,27 @@
       @extend %ddmenu-is-expanded;
     }
   }
+}
+
+a[data-toggle='collapse'] {
+  position: relative;
+  padding-left: 1em;
+  margin-right: 1em;
+  &:before {
+    position: absolute;
+    width: 1em;
+    height: $line-height-computed;
+    left: 0;
+    content: '+';
+  }
+  &[aria-expanded='true'] {
+    &:before {
+      content: '\2013';
+    }
+  }
+}
+
+.collapsing {
+  transition-duration: .1s;
+  transition-timing-function: ease-in-out;
 }

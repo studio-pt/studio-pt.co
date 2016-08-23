@@ -1,9 +1,25 @@
+body.home {
+  margin-bottom: 0;
+  footer.content-info {
+    position: fixed;
+    bottom: $grid-gutter-width;
+    left: $grid-gutter-width;
+    height: auto;
+    padding: 0;
+  }
+  footer.content-info > .container-fluid,
+  #menu-links {
+    padding: 0;
+  }
+}
+
 footer.content-info {
   @include clearfix;
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 105px;
+  height: ($grid-gutter-width * 2) + 25px;
+  z-index: 2;
 }
 
 #menu-links {

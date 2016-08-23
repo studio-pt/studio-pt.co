@@ -1,3 +1,4 @@
+<div class="posts-container">
 <?php if (!is_home() || !is_front_page()) : ?>
   <?php if (!is_post_type_archive()) : ?>
     <?php get_template_part('templates/page', 'header'); ?>
@@ -13,3 +14,4 @@
 <?php endwhile; ?>
 
 <?php the_posts_pagination(); ?>
+</div>
