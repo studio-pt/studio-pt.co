@@ -6,6 +6,18 @@
   margin-bottom: $line-height-computed;
 }
 
+.hentry {
+  header {
+    margin-bottom: $line-height-computed / 2;
+  }
+  .entry-title {
+    margin-top: 0;
+  }
+  .entry-meta {
+    margin-bottom: 0;
+  }
+}
+
 .archive .hentry {
   @include clearfix;
   position: relative;
@@ -18,28 +30,14 @@
       margin-left: 120px;
     }
   }
-  header {
-    margin-bottom: $line-height-computed / 2;
-  }
 }
 
 .single .hentry {
-  header {
-    margin-bottom: $line-height-computed;
-  }
-}
-
-.hentry {
-  .entry-title {
-    margin-top: 0;
-  }
-  .entry-meta {
-    margin-bottom: 0;
-  }
 }
 
 .entry-title {
   font-size: $font-size-large;
+  font-weight: 500;
 }
 
 .entry-meta {

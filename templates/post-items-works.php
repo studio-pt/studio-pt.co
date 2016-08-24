@@ -11,7 +11,7 @@
 <?php
   $GLOBALS['wp_query']->max_num_pages = $the_query->max_num_pages;
   the_posts_pagination(array(
-    'base' => '/%_%'
+    'base' => '/works/%_%'
   ));
   wp_reset_postdata();
   ?>

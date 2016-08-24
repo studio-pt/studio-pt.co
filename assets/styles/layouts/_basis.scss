@@ -9,10 +9,12 @@ body {
   letter-spacing: .5px;
   font-feature-settings: 'palt' 1;
   margin-bottom: $grid-gutter-width + 20 + 20px; // Margin bottom by footer height, 65
+  @media (max-width: $screen-xs-max) {
+    &.is-fixed { position: fixed; overflow: hidden; }
+  }
   @media (min-width: $screen-sm) {
     margin-bottom: ($grid-gutter-width * 2) + 25 + 20px; // 85
   }
-  &.is-fixed { position: fixed; overflow: hidden; }
 }
 
 .main {

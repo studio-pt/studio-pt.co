@@ -16,9 +16,47 @@
 
   MAIN.setMenu = function()
   {
-    var m = $('#icon-menu');
-    var n = $('.nav-primary');
-    var w = $(window), b = $('body');
+    var m = $('#icon-menu'),
+        d = $('.dropdown-toggle'),
+        n = $('.nav-primary'),
+        w = $(window),
+        b = $('body'),
+        menuAction;
+
+    function togglePos() {
+      var g = 40,
+          wh = w.height();
+      n.each(function(i) {
+        var nh = $(this).height();
+        if (wh <= nh + (g * 2)) {
+          $('body').addClass('is-menu-overflow');
+        } else {
+          $('body').removeClass('is-menu-overflow');
+        }
+      });
+    }
+
+    function checkHeight() {
+      d.each(function() {
+        var dh = $(this).height();
+        if (dh > 0) {
+          clearInterval(menuAction);
+          togglePos();
+          return;
+        }
+      });
+    }
+
+    function onStartTimer() {
+      togglePos();
+      clearInterval(menuAction);
+      menuAction = setInterval(checkHeight, 100);
+    }
+
+    if (window.matchMedia('(min-width:769px)').matches) {
+      d.on('click', onStartTimer);
+      w.on('resize', togglePos).trigger('resize');
+    }
 
     m.on('click', function() {
 		  $(this).toggleClass('is-open');
@@ -101,92 +139,19 @@
     });
   };
 
-  MAIN.setFreewall = function()
+  MAIN.setIas = function()
   {
-    var init = true;
-    var wall = new Freewall('.posts');
-
-    var opt = {
-      gutter : 30,
-      screen : {
-        breakpoint: 768
-      }
-    };
-
-    if (feature.css3Dtransform) {
-      $('html').addClass('css3Dtransform');
-      var sr = new ScrollReveal({
-        scale: 1,
-        distance: '0',
-        duration: 500,
-        easing: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
-        mobile: false
-      });
-    }
-
-    var cellSize = function(containerWidth) {
-      var colNum;
-      var single = $('body').hasClass('single');
-
-      if (containerWidth < opt.screen.breakpoint) {
-        colNum = 2;
-        wall.container.attr("class", "posts-sm");
-      } else {
-        if (single) {
-          colNum = 5;
-        } else {
-          colNum = 4;
-        }
-        wall.container.attr("class", "posts-lg");
-      }
-      return (containerWidth / colNum) - opt.gutter;
-    };
-
-    wall.container.imagesLoaded(function() {
-      wall.reset({
-        selector: '.post-item',
-        cellW: cellSize,
-        cellH: 'auto',
-        gutterX: opt.gutter,
-        gutterY: opt.gutter,
-        cacheSize: false,
-        animate: false,
-        onResize: function (container) {
-          if (window.matchMedia('(max-width: 767px)').matches){
-            container.attr('class', 'posts posts-sm');
-          } else {
-            container.attr('class', 'posts posts-lg');
-          }
-          wall.fitWidth();
-        }
-      });
-      wall.fitWidth();
-      if (feature.css3Dtransform && init) {
-        sr.reveal('.post-item');
-        init = false;
-      }
-    });
-
     var ias = $.ias({
-      container:      '.posts',
-      item:           '.post-item',
+      container:      '.works-body',
+      item:           '.works-item',
       pagination:     '.pagination',
       next:           '.nav-links .next',
-      negativeMargin: 1024
+      negativeMargin: 200
     });
 
     ias.extension(new IASSpinnerExtension({
       src: '/assets/images/loading.svg', // optionally
     }));
-
-    ias.on('rendered', function(items) {
-      $(items).imagesLoaded(function() {
-        wall.fitWidth();
-        if (feature.css3Dtransform) {
-          sr.sync();
-        }
-      });
-    });
   };
 
   // Use this variable to set up the common and page specific functions. If you
@@ -210,12 +175,12 @@
     },
     'post_type_archive': {
       finalize: function() {
-        //MAIN.setFreewall();
+        MAIN.setIas();
       }
     },
     'single_works': {
       finalize: function() {
-        //MAIN.setFreewall();
+        MAIN.setIas();
       }
     },
     'contact': {

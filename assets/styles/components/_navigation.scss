@@ -9,6 +9,12 @@
   }
 }
 
+@media (min-width: $screen-sm) {
+  body.is-menu-overflow .nav-primary {
+    position: absolute;
+  }
+}
+
 .nav-primary {
   z-index: 10;
   @media (max-width: $screen-xs-max) {
@@ -188,5 +194,17 @@ a[data-toggle='collapse'] {
       width: 0%;
       left: 50%;
     }
+  }
+}
+
+.posts-navigation {
+  margin-top: $line-height-computed * 2;
+  .nav-links {
+    @include clearfix;
+    margin-left: -10px;
+  }
+  .nav-previous, .nav-next, .nav-back {
+    display: inline-block;
+    margin-left: 10px;
   }
 }
