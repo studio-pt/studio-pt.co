@@ -201,10 +201,9 @@ a[data-toggle='collapse'] {
   margin-top: $line-height-computed * 2;
   .nav-links {
     @include clearfix;
-    margin-left: -10px;
   }
-  .nav-previous, .nav-next, .nav-back {
+  a {
     display: inline-block;
-    margin-left: 10px;
+    margin-right: 10px;
   }
 }

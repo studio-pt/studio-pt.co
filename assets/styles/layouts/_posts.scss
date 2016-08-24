@@ -8,7 +8,7 @@
 
 .hentry {
   header {
-    margin-bottom: $line-height-computed / 2;
+    margin-bottom: $line-height-computed;
   }
   .entry-title {
     margin-top: 0;
@@ -21,6 +21,9 @@
 .archive .hentry {
   @include clearfix;
   position: relative;
+  header {
+    margin-bottom: $line-height-computed / 2;
+  }
   @media (min-width: $screen-sm) {
     .entry-meta {
       width: 120px;

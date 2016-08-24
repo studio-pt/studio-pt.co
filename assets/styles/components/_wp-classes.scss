@@ -48,3 +48,7 @@
 .wp-post-image {
   @extend %img-responsive;
 }
+
+.wp-video {
+  margin-bottom: $line-height-computed;
+}
