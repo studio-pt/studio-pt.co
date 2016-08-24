@@ -14,6 +14,19 @@
 
   var MAIN = {};
 
+  MAIN.setMenu = function()
+  {
+    var m = $('#icon-menu');
+    var n = $('.nav-primary');
+    var w = $(window), b = $('body');
+
+    m.on('click', function() {
+		  $(this).toggleClass('is-open');
+      n.toggleClass('is-open');
+      b.toggleClass('is-fixed');
+	  });
+  };
+
   MAIN.setSVGFallback = function()
   {
     if (!feature.svg) {
@@ -52,16 +65,23 @@
     var p = $('.pagetop'),
         c = $('.copyright'),
         w = $(window);
-    w.on('scroll', function(){
-      t = w.scrollTop();
-      if (t === 0) {
+
+    w.on('resize', function(){
+      if (window.matchMedia('(min-width: 768px)').matches) {
+        w.on('scroll', function(){
+          t = w.scrollTop();
+          if (t === 0) {
+            p.hide();
+            c.show();
+          } else if (t >= 1) {
+            p.show();
+            c.hide();
+          }
+        }).trigger('scroll');
+      } else if (window.matchMedia('(max-width: 768px)').matches) {
         p.hide();
-        c.show();
-      } else if (t >= 1) {
-        p.show();
-        c.hide();
       }
-    }).trigger('scroll');
+    }).trigger('resize');
   };
 
   MAIN.setSmoothScroll = function()
@@ -177,6 +197,7 @@
         MAIN.setSVGFallback();
         MAIN.setPageTop();
         MAIN.setSmoothScroll();
+        MAIN.setMenu();
       },
       finalize: function() {
       }

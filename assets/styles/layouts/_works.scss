@@ -24,7 +24,7 @@
     @extend %container-xs;
     text-align: center;
     @media (min-width: $screen-sm) {
-      margin-top: 0;
+      margin-top: -40px;
     }
   }
   .entry-meta {
@@ -53,6 +53,7 @@
   @extend %list-inline;
   * { line-height: 1; }
   > li {
+    white-space: nowrap;
     margin-right: .5em;
     padding-right: .5em;
     border-right: 1px solid $base-border-color;

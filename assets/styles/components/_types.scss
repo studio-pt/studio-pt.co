@@ -3,8 +3,10 @@
 .page-header {
   border: none;
   margin-top: 0;
-  //padding-bottom: 0;
   text-align: center;
+  @media (max-width: $screen-xs-max) {
+    padding-bottom: 0;
+  }
   @media (min-width: $screen-sm) {
     text-align: left;
   }

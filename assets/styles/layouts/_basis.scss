@@ -5,16 +5,20 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: ($grid-gutter-width * 2) + 25px; // 85;
+  -webkit-font-smoothing: antialiased;
   letter-spacing: .5px;
   font-feature-settings: 'palt' 1;
+  margin-bottom: $grid-gutter-width + 20 + 20px; // Margin bottom by footer height, 65
+  @media (min-width: $screen-sm) {
+    margin-bottom: ($grid-gutter-width * 2) + 25 + 20px; // 85
+  }
+  &.is-fixed { position: fixed; overflow: hidden; }
 }
 
 .main {
   position: relative;
   z-index: 1;
-  margin-top: ($grid-gutter-width * 2) + 20px;
+  margin-top: ($grid-gutter-width) + 30px;
   @media (min-width: $screen-sm) {
     margin-top: ($grid-gutter-width * 2) + 40px;
   }
@@ -22,24 +26,29 @@ body {
 
 .copyright {
   font-family: $nav-font-family;
-  font-size: $font-size-large;
-  position: fixed;
+  position: absolute;
   z-index: 2;
-  bottom: $header-gutter;
-  right: $header-gutter;
-  @media (max-width: $screen-xs-max) {
-    display: none;
+  line-height: 1;
+  bottom: $header-gutter / 2;
+  right: $header-gutter / 2;
+  @media (min-width: $screen-sm) {
+    position: fixed;
+    bottom: $header-gutter;
+    right: $header-gutter;
+    font-size: $font-size-large;
   }
 }
 
 .pagetop {
   @extend %hover-to-fade;
-  font-size: $font-size-large;
+  line-height: 1;
   position: fixed;
   z-index: 2;
-  bottom: $header-gutter;
-  right: $header-gutter;
-  @media (max-width: $screen-xs-max) {
-    display: none;
+  bottom: $header-gutter / 2;
+  right: $header-gutter / 2;
+  display: none;
+  @media (min-width: $screen-sm) {
+    bottom: $header-gutter;
+    right: $header-gutter;
   }
 }

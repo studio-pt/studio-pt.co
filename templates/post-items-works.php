@@ -1,4 +1,4 @@
-<div class="works-container">
+<div class="works-body">
 <?php
   $the_query = new WP_Query(array(
     'paged'       => get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1,

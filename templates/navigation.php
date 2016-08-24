@@ -1,3 +1,10 @@
+<div id="icon-menu">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
 <nav role="navigation" class="nav-primary">
   <?php
   if (has_nav_menu('primary_navigation')) :
