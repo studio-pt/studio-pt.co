@@ -17,15 +17,22 @@
                 echo '<li><dl>';
                 $role = get_sub_field('role');
                 echo '<dt>' . $role . '</dt>';
-                if (get_sub_field('person')):
-                  $persons = get_sub_field('person');
-                  foreach ($persons as $person) :
-                    echo '<dd>';
-                    echo '<a href="'. esc_url(home_url('/')) . get_post_type(get_the_ID()) . '/?' . $person->taxonomy . '=' . $person->slug  . '">';
-                    echo $person->name;
-                    echo '</a>';
-                    echo '</dd>';
-                  endforeach;
+                if (have_rows('persons')):
+                  while (have_rows('persons')) : the_row();
+                    if (get_row_layout() == 'person'):
+                      if (get_sub_field('current-staff')) :
+                        $current = get_sub_field('current-staff');
+                        echo '<dd>';
+                        echo '<a href="'. esc_url(home_url('/')) . get_post_type(get_the_ID()) . '/?' . $current->taxonomy . '=' . $current->slug  . '">';
+                        echo $current->name;
+                        echo '</a>';
+                        echo '</dd>';
+                      elseif (get_sub_field('ex-staff')) :
+                        $ex = get_sub_field('ex-staff');
+                        echo '<dd>' . $ex . '</dd>';
+                      endif;
+                    endif;
+                  endwhile;
                 endif;
                 echo '</dl></li>';
               endif;
@@ -53,9 +60,9 @@
         ?>
         </ul>
         <?php
-          $genre = get_the_term_list($post->ID, 'g', '<li>', '</li><li>', '</li>');
-          if ($genre) :
-            echo '<ul class="entry-genres">'. $genre . '</ul>';
+          $type = get_the_term_list($post->ID, 't', '<li>', '</li><li>', '</li>');
+          if ($type) :
+            echo '<ul class="entry-types">'. $type . '</ul>';
           endif;
         ?>
       </div>
@@ -110,6 +117,9 @@
             elseif( get_row_layout() == 'editor' ):
               $editor = get_sub_field('editor');
               echo '<div class="entry-item editor">' . $editor . '</div>';
+            elseif( get_row_layout() == 'credit' ):
+              $credit = get_sub_field('credit');
+              echo '<div class="entry-item credit">' . $credit . '</div>';
             elseif( get_row_layout() == 'video' ):
               $video = get_sub_field('video');
               $poster = get_sub_field('poster');

@@ -33,7 +33,7 @@
   }
 }
 
-.entry-genres {
+.entry-types {
   text-align: center;
   @extend %list-unstyled;
   @extend %list-inline;
@@ -98,8 +98,12 @@
 .entry-item {
   margin-bottom: $line-height-computed * 2;
   @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
-  &.editor {
+  &.editor, &.credit {
     @extend %container-sm;
+  }
+  &.credit {
+    font-size: $font-size-small;
+    text-align: center;
   }
   &.caption {
     text-align: center;
