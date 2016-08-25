@@ -19,18 +19,16 @@
                 echo '<dt>' . $role . '</dt>';
                 if (have_rows('persons')):
                   while (have_rows('persons')) : the_row();
-                    if (get_row_layout() == 'person'):
-                      if (get_sub_field('current-staff')) :
-                        $current = get_sub_field('current-staff');
-                        echo '<dd>';
-                        echo '<a href="'. esc_url(home_url('/')) . get_post_type(get_the_ID()) . '/?' . $current->taxonomy . '=' . $current->slug  . '">';
-                        echo $current->name;
-                        echo '</a>';
-                        echo '</dd>';
-                      elseif (get_sub_field('ex-staff')) :
-                        $ex = get_sub_field('ex-staff');
-                        echo '<dd>' . $ex . '</dd>';
-                      endif;
+                    if (get_row_layout() == 'current-staff'):
+                      $current = get_sub_field('current-staff');
+                      echo '<dd>';
+                      echo '<a href="'. esc_url(home_url('/')) . get_post_type(get_the_ID()) . '/?' . $current->taxonomy . '=' . $current->slug  . '">';
+                      echo $current->name;
+                      echo '</a>';
+                      echo '</dd>';
+                    elseif (get_row_layout() == 'ex-staff'):
+                      $ex = get_sub_field('ex-staff');
+                      echo '<dd>' . $ex . '</dd>';
                     endif;
                   endwhile;
                 endif;
