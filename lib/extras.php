@@ -21,11 +21,6 @@ function body_class($classes) {
     $classes[] = 'sidebar-primary';
   }
 
-  // Add class if color is Inversed
-  if (is_page('about')) {
-    $classes[] = 'inversed';
-  }
-
   return $classes;
 }
 add_filter('body_class', __NAMESPACE__ . '\\body_class');

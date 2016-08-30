@@ -1,3 +1,8 @@
+.entry-body + .works-body {
+  margin-top: $line-height-computed * 2;
+  @media (min-width: $screen-sm) { margin-top: $line-height-computed * 4; }
+}
+
 .works-body {
   @include make-row();
   .works-item {
