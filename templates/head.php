@@ -13,11 +13,13 @@
     if (is_single()) {
       if (have_posts()): while(have_posts()): the_post();
       echo '<meta property="og:description" content="'; echo mb_substr(str_replace(array("\r\n", "\r", "\n"), '', strip_tags(get_the_excerpt())), 0, 100); echo '">'; echo "\n";
+      echo '<meta property="twitter:text:description" content="'; echo mb_substr(str_replace(array("\r\n", "\r", "\n"), '', strip_tags(get_the_excerpt())), 0, 100); echo '">'; echo "\n";
       endwhile; endif;
       echo '<meta property="og:title" content="'; the_title(); echo '">'; echo "\n";
       echo '<meta property="og:url" content="'; the_permalink(); echo '">'; echo "\n";
     } else {
       echo '<meta property="og:description" content="'; bloginfo('description'); echo '">';echo "\n";
+      echo '<meta property="twitter:text:description" content="'; bloginfo('description'); echo '">';echo "\n";
       echo '<meta property="og:title" content="'; bloginfo('name'); echo '">'; echo "\n";
       echo '<meta property="og:url" content="'; bloginfo('url'); echo '">'; echo "\n";
     }
