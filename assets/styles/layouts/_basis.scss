@@ -26,15 +26,20 @@ body {
   }
 }
 
+.home .main {
+  @media (min-width: $screen-sm) {
+    padding-bottom: ($grid-gutter-width * 2) + 40px;
+  }
+}
+
 .copyright {
   font-family: $nav-font-family;
   position: absolute;
   z-index: 2;
   line-height: 1;
-  bottom: $header-gutter / 2;
   right: $header-gutter / 2;
   @media (min-width: $screen-sm) {
-    position: fixed;
+    position: fixe + 40pxd;
     bottom: $header-gutter;
     right: $header-gutter;
     font-size: $font-size-base;
