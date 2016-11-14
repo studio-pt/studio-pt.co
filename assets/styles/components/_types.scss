@@ -1,0 +1,15 @@
+// Page Header
+
+.page-header {
+  border: none;
+  margin-top: 0;
+  text-align: center;
+  padding-bottom: 0;
+  @media (min-width: $screen-sm) {
+    text-align: left;
+  }
+  > h1, h2, h3, h4, h5, h6 {
+    font-size: $font-size-h2;
+    margin-top: 0;
+  }
+}

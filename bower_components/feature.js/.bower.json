@@ -1,0 +1,14 @@
+{
+  "name": "feature.js",
+  "homepage": "https://github.com/viljamis/feature.js",
+  "version": "1.0.1",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.1",
+    "commit": "351e808b8c651f2c922178535bb0025ce98a2d7c"
+  },
+  "_source": "https://github.com/viljamis/feature.js.git",
+  "_target": "^1.0.1",
+  "_originalSource": "feature.js"
+}

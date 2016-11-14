@@ -1,0 +1,56 @@
+// basis
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: .5px;
+  font-feature-settings: 'palt' 1;
+  margin-bottom: $grid-gutter-width + 20 + 20px; // Margin bottom by footer height, 65
+  @media (max-width: $screen-xs-max) {
+    &.is-fixed { position: fixed; overflow: hidden; }
+  }
+  @media (min-width: $screen-sm) {
+    margin-bottom: ($grid-gutter-width * 2) + 25 + 20px; // 85
+  }
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  padding-top: ($grid-gutter-width) + 30px;
+  @media (min-width: $screen-sm) {
+    padding-top: ($grid-gutter-width * 2) + 40px;
+  }
+}
+
+.copyright {
+  font-family: $nav-font-family;
+  position: absolute;
+  z-index: 2;
+  line-height: 1;
+  bottom: $header-gutter / 2;
+  right: $header-gutter / 2;
+  @media (min-width: $screen-sm) {
+    position: fixed;
+    bottom: $header-gutter;
+    right: $header-gutter;
+    font-size: $font-size-base;
+  }
+}
+
+.pagetop {
+  @extend %hover-to-fade;
+  line-height: 1;
+  position: fixed;
+  z-index: 2;
+  bottom: $header-gutter / 2;
+  right: $header-gutter / 2;
+  display: none;
+  @media (min-width: $screen-sm) {
+    bottom: $header-gutter;
+    right: $header-gutter;
+  }
+}

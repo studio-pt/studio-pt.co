@@ -1,0 +1,11 @@
+// Topics
+.topics {
+  @include make-row(10px);
+  .topic-item {
+    @include make-xs-column(12, 10px);
+    @include make-sm-column(6, 10px);
+    .card {
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+// Header
+.brand {
+  @extend %hover-to-fade;
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  @media (max-width: $screen-xs-max) {
+    top: $header-gutter / 2;
+    left: 50%;
+    > img {
+      max-height: 30px;
+      transform: translateX(-50%);
+    }
+  }
+  @media (min-width: $screen-sm) {
+    top: $header-gutter;
+    left: $header-gutter;
+  }
+}

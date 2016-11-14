@@ -1,0 +1,18 @@
+// Grid system
+.container, .container-fluid {
+  @media (min-width: $screen-sm) {
+    padding-left:  $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+  }
+}
+
+.main {
+  @include make-sm-column($main-sm-columns);
+  .sidebar-primary & {
+    @include make-sm-column($main-sm-columns - $sidebar-sm-columns);
+  }
+}
+
+.sidebar {
+  @include make-sm-column($sidebar-sm-columns);
+}

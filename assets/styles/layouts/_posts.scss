@@ -1,0 +1,70 @@
+.posts-container {
+  @extend %container-sm;
+}
+
+.posts-item {
+  margin-bottom: $line-height-computed;
+}
+
+.hentry {
+  header {
+    margin-bottom: $line-height-computed;
+  }
+  .entry-title {
+    margin-top: 0;
+  }
+  .entry-meta {
+    margin-bottom: 0;
+  }
+}
+
+.archive .hentry {
+  @include clearfix;
+  position: relative;
+  header {
+    margin-bottom: $line-height-computed / 2;
+  }
+  @media (min-width: $screen-sm) {
+    .entry-meta {
+      width: 120px;
+      position: absolute;
+    }
+    header, .entry-summary {
+      margin-left: 120px;
+    }
+  }
+}
+
+.single .hentry {
+}
+
+.entry-title {
+  font-size: $font-size-large;
+  font-weight: 500;
+}
+
+.entry-meta {
+  font-family: $nav-font-family;
+  font-weight: 500;
+  margin-bottom: $line-height-computed;
+  @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed / 2; }
+}
+
+@keyframes spin {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+
+.ias-spinner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 99999;
+  > img {
+    width: 40px;
+    height: 40px;
+    animation: spin 1.5s linear infinite;
+  }
+}
