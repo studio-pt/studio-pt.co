@@ -38,6 +38,7 @@ body {
   z-index: 2;
   line-height: 1;
   right: $header-gutter / 2;
+  bottom: 24px;
   @media (min-width: $screen-sm) {
     position: fixe + 40pxd;
     bottom: $header-gutter;
