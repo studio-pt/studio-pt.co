@@ -40,11 +40,17 @@
         <?php
           if (get_the_terms($post->ID, 'y')) :
             $years = get_the_terms($post->ID, 'y');
+            echo '<li>';
             foreach ($years as $year) :
-              echo '<li><a href="'. esc_url(home_url('/')) . get_post_type(get_the_ID()) . '/?' . $year->taxonomy . '=' . $year->slug  . '">';
+              echo '<a href="'. esc_url(home_url('/')) . get_post_type(get_the_ID()) . '/?' . $year->taxonomy . '=' . $year->slug  . '">';
               echo $year->name;
-              echo '</a></li>';
+              if ($year === end($years)) :
+                echo '</a>  ';
+              else:
+                echo '</a>, ';
+              endif;
             endforeach;
+            echo '</li>';
           endif;
         ?>
         <?php
