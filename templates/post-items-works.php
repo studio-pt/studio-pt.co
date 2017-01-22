@@ -1,6 +1,6 @@
 <div class="works-body">
   <div class='works-header'>
-    <h3>Works</h3>
+    <h3>Latest</h3>
   </div>
 <?php
   $the_query = new WP_Query(array(

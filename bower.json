@@ -29,10 +29,7 @@
     },
     "bootstrap-sass": {
       "main": [
-        "./assets/stylesheets/_bootstrap.scss",
-        "./assets/javascripts/bootstrap/dropdown.js",
-        "./assets/javascripts/bootstrap/collapse.js",
-        "./assets/javascripts/bootstrap/transition.js"
+        "./assets/stylesheets/_bootstrap.scss"
       ],
       "_main": [
         "./assets/stylesheets/_bootstrap.scss",

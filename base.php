@@ -36,7 +36,5 @@ use Roots\Sage\Wrapper;
       get_template_part('templates/footer');
       wp_footer();
     ?>
-    <a class='pagetop' href='#pagetop'><img src="/assets/images/icon-chevron-thin-up.svg" alt="Page Top"></a>
-    <small class="copyright">&copy; <?php echo date('Y'); ?> Asyl</small>
   </body>
 </html>

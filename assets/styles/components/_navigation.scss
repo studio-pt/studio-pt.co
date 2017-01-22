@@ -64,94 +64,9 @@
   }
 }
 
-%ddmenu-base {
-  overflow: hidden;
-  display: block;
-  box-shadow: none;
-  border-radius: 0;
-  width: 100%;
-}
-
-%ddmenu-is-collapsed {
-  height: 0;
-}
-
-%ddmenu-is-expanded {
-  height: auto;
-}
-
-// The dropdown menu (ul)
-.dropdown-menu {
-  @extend %ddmenu-base;
-  @extend %ddmenu-is-collapsed;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  border: none;
-  @media (max-width: $screen-xs-max) {
-    max-height: 200px;
-    overflow-y: scroll;
-  }
-  > li {
-    line-height: 1.4;
-    &:first-child {
-      margin-top: 10px;
-      > a { padding-top: 0; }
-    }
-    &:last-child {
-      margin-bottom: 10px;
-      > a { padding-bottom: 0; }
-    }
-    > a {
-      font-size: 20px;
-      border-right: 2px solid $brand-primary;
-      padding: 10px 0 7px 0;
-      @media (min-width: $screen-sm) {
-        padding: 10px 10px 7px 0;
-      }
-    }
-  }
-}
-
-.caret {
-  display: none;
-}
-
-// State for the dropdown
-.dropdown {
-  &.open {
-    > .dropdown-menu {
-      @extend %ddmenu-is-expanded;
-    }
-  }
-}
-
-a[data-toggle='collapse'] {
-  position: relative;
-  padding-left: 1em;
-  margin-right: 1em;
-  &:before {
-    position: absolute;
-    width: 1em;
-    height: $line-height-computed;
-    left: 0;
-    content: '+';
-  }
-  &[aria-expanded='true'] {
-    &:before {
-      content: '\2013';
-    }
-  }
-}
-
-.collapsing {
-  transition-duration: .1s;
-  transition-timing-function: ease-in-out;
-}
-
 #icon-menu {
   position: fixed;
-  top: 24px;
+  top: 22px;
   right: $grid-gutter-width / 2;
   z-index: 999;
   width: 30px;
@@ -205,5 +120,17 @@ a[data-toggle='collapse'] {
   a {
     display: inline-block;
     margin-right: 10px;
+  }
+}
+
+#menu-social {
+  list-style: none;
+  padding: 0;
+  > li {
+    display: inline-block;
+    padding: 0 1rem;
+    > a {
+      @extend %hover-to-fade;
+    }
   }
 }

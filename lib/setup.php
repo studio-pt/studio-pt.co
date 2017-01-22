@@ -108,7 +108,6 @@ function assets() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script('gmaps', '//maps.google.com/maps/api/js?sensor=false&libraries=geometry&v=3.22&key=AIzaSyD4Eir3BgUGdIQ5wIQ6MCl90xVg-QFvcTo', [], null, true);
   wp_enqueue_script('plugins', Assets\asset_path('scripts/plugins.js'), [], null, true);
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }

@@ -4,11 +4,10 @@
 }
 
 .works-body {
-  @include make-row();
+  @include make-row(0);
   .works-item {
-    @include make-xs-column(6);
-    @include make-sm-column(4);
-    @include make-lg-column(3);
+    @include make-xs-column(6, 0);
+    @include make-sm-column(4, 0);
   }
   .works-header {
     @media (min-width: $screen-sm) {
@@ -43,14 +42,44 @@
 }
 
 .single-works {
-  .entry-body {
-    @extend %container-lg;
-  }
   .entry-title {
     @extend %container-xs;
     text-align: center;
     @media (min-width: $screen-sm) {
       margin-top: -40px;
+    }
+  }
+  .entry-feature {
+    @extend %container-xl;
+    > .entry-item {
+      > .item-image {
+        > img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  .entry-content {
+    @extend %container-lg;
+    > .entry-item {
+      @extend %container-md;
+      &:nth-child(odd) {
+        margin-right: 0;
+        .item-editor {
+          @media (min-width: $screen-md) {
+            margin-right: 0;
+          }
+        }
+      }
+      &:nth-child(even) {
+        margin-left: 0;
+        .item-editor {
+          @media (min-width: $screen-md) {
+            margin-left: 0;
+          }
+        }
+      }
     }
   }
   .entry-meta {
@@ -61,7 +90,6 @@
 
 .entry-types {
   text-align: center;
-  font-size: $font-size-small;
   @extend %list-unstyled;
   @extend %list-inline;
   font-family: $headings-font-family;
@@ -69,49 +97,6 @@
     margin-right: 1em;
     &:last-child {
       margin-right: 0;
-    }
-  }
-}
-
-.entry-attributes {
-  text-align: center;
-  font-size: $font-size-small;
-  @extend %container-sm;
-  @extend %list-unstyled;
-  @extend %list-inline;
-  * { line-height: 1; }
-  > li {
-    white-space: nowrap;
-    margin-right: .5em;
-    padding-right: .5em;
-    border-right: 1px solid $base-border-color;
-    &:last-child {
-      margin-right: 0;
-      padding-right: 0;
-      border-right: none;
-    }
-    > dl {
-      @extend %dl-unstyled;
-      @extend %dl-inline;
-      > dt {
-        margin-right: .5em;
-        &:after {
-          display: inline-block;
-          content: ':';
-        }
-      }
-      > dd {
-        &:after {
-          display: inline-block;
-          content: ',';
-          margin-right: .5em;
-        }
-        &:last-child {
-          &:after {
-            display: none;
-          }
-        }
-      }
     }
   }
 }
@@ -126,30 +111,16 @@
 .entry-item {
   margin-bottom: $line-height-computed * 2;
   @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
-  &.editor, &.credit {
-    @extend %container-sm;
+  > .item-editor {
+    //@extend %container-sm;
   }
-  &.credit {
-    font-size: $font-size-small;
-    text-align: center;
-  }
-  &.caption {
-    text-align: center;
-    color: $gray-light;
-    margin-top: -#{$line-height-computed * 1.5};
-    margin-bottom: $line-height-computed * 1.5;
-    @media (max-width: $screen-xs-max) {
-      margin-top: -#{$line-height-computed / 2};
-      margin-bottom: $line-height-computed / 2;
-    }
-  }
-  &.image {
+  > .item-image {
     text-align: center;
     > img {
       @extend %img-responsive;
     }
   }
-  &.oembed, &.video {
+  > .item-oembed, > .item-video {
     position: relative;
 	  padding-bottom: 56.25%; /* 16:9 */
 	  height: 0;
@@ -160,6 +131,49 @@
     	left: 0;
     	width: 100%;
     	height: 100%;
+    }
+  }
+}
+
+.works-item {
+  text-align: center;
+  margin-bottom: $grid-gutter-width / 2;
+  .item {
+    &-poster {
+      display: block;
+      position: relative;
+    	height: 0;
+      overflow: hidden;
+      cursor: pointer;
+      padding-bottom: 56.25%; /* 16:9 */
+      background-color: #000;
+      &:hover {
+        .item-poster-inner {
+          transform: scale(1.01);
+          opacity: .7;
+        }
+      }
+      &-inner {
+      	position: absolute;
+      	top: 0;
+      	left: 0;
+      	width: 100%;
+      	height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        transition: all .1s linear;
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    &-summary {
+      .title {
+        font-size: 1.8rem;
+        @include ellipsis(#{$line-height-computed * 2}, 2);
+      }
+      .taxonomy {
+      }
     }
   }
 }

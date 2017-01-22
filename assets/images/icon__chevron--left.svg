@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="36px" height="60px" viewBox="0 0 36 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>icon__chevron--left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon__chevron--left" fill="#0033FF">
+            <path d="M35.29688,28.125 L5.296875,0.78125 C4.776039,0.26041 4.177087,0 3.5,0 C2.822913,0 2.223961,0.26041 1.703125,0.78125 C1.2343727,1.25 1,1.83593 1,2.53906 C1,3.24219 1.2343727,3.82812 1.703125,4.29688 L29.90625,30 L1.703125,55.703125 C1.2343727,56.171877 1,56.757809 1,57.460938 C1,58.164066 1.2343727,58.749998 1.703125,59.21875 C2.223961,59.7395859 2.822913,60 3.5,60 C4.177087,60 4.776039,59.7395859 5.296875,59.21875 L35.29688,31.875 C35.55729,31.61458 35.7526,31.32813 35.88281,31.01562 C36.01302,30.70312 36.05208,30.36459 36,30 C36.05208,29.63541 36.01302,29.29688 35.88281,28.98438 C35.7526,28.67187 35.55729,28.38542 35.29688,28.125 Z" id="Page-1" transform="translate(18.539060, 35.000000) scale(-1, 1) translate(-18.539060, -35.000000) "></path>
+        </g>
+    </g>
+</svg>

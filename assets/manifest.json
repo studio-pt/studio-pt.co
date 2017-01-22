@@ -23,9 +23,9 @@
   },
   "paths": {
     "source": "assets/",
-    "dist": "../../../../assets/"
+    "dist": "../../../assets/"
   },
   "config": {
-    "devUrl": "http://asyl.localhost"
+    "devUrl": "http://hodwn.local"
   }
 }

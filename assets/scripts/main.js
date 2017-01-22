@@ -156,7 +156,7 @@
 
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
-  var ASYL = {
+  var HOEDOWN = {
     'common': {
       init: function() {
         MAIN.setSVGFallback();
@@ -195,7 +195,7 @@
   var UTIL = {
     fire: function(func, funcname, args) {
       var fire;
-      var namespace = ASYL;
+      var namespace = HOEDOWN;
       funcname = (funcname === undefined) ? 'init' : funcname;
       fire = func !== '';
       fire = fire && namespace[func];

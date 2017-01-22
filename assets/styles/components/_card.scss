@@ -5,9 +5,9 @@
   overflow: hidden;
   cursor: pointer;
   margin-bottom: $grid-gutter-width / 2;
-  @media (min-width: $screen-sm) {
-    margin-bottom: $grid-gutter-width;
-  }
+  // @media (min-width: $screen-sm) {
+  //   margin-bottom: $grid-gutter-width;
+  // }
   &.card-square   { padding-bottom: 100%; }   /* 1:1 */
   &.card-standard { padding-bottom: 75%; }    /* 4:3 */
   &.card-vista    { padding-bottom: 56.25%; } /* 16:9 */
@@ -20,7 +20,6 @@
     }
     .card-background {
       transform: scale(1.03);
-      // filter: grayscale(100%);
       background-blend-mode: multiply;
       background-color: $brand-primary;
     }
