@@ -23,6 +23,20 @@
     }
   };
 
+  MAIN.setMenu = function()
+  {
+    var m = $('#icon-menu'),
+        n = $('.nav-primary'),
+        w = $(window),
+        b = $('body');
+
+    m.on('click', function() {
+		  $(this).toggleClass('is-open');
+      n.toggleClass('is-open');
+      b.toggleClass('is-fixed');
+	  });
+  };
+
   MAIN.setIas = function()
   {
     var ias = $.ias({
@@ -48,6 +62,7 @@
     'common': {
       init: function() {
         MAIN.setSVGFallback();
+        MAIN.setMenu();
         //MAIN.setPageTop();
         //MAIN.setSmoothScroll();
       },

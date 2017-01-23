@@ -3,6 +3,7 @@
 }
 
 .page-body {
+  text-align: left;
   > p, > dl, > ul, > ol {
     line-height: 1.8;
     margin-bottom: $line-height-computed / 2;

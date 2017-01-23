@@ -10,45 +10,12 @@
     @include make-sm-column(6, 0);
     @include make-lg-column(4, 0);
   }
-  .works-header {
-    @media (min-width: $screen-sm) {
-      margin-top: 0;
-    }
-  }
-}
-
-.works-header {
-  text-align: center;
-  > h1, h2 {
-    font-size: $font-size-h2;
-  }
-  > h1, h2, h3, h4, h5, h6 {
-    margin: 1em 0;
-  }
-  @media (min-width: $screen-sm) {
-    margin-top: -40px;
-    > h1, h2, h3, h4, h5, h6 {
-      margin: 0 0 2em;
-    }
-  }
-}
-
-.post-type-archive-works {
-  .page-header {
-    @media (min-width: $screen-sm) {
-      margin-top: 0;
-      padding-bottom: 0;
-    }
-  }
 }
 
 .single-works {
   .entry-title {
     @extend %container-xs;
     text-align: center;
-    @media (min-width: $screen-sm) {
-      margin-top: -40px;
-    }
   }
   .entry-feature {
     @extend %container-xl;
@@ -113,7 +80,7 @@
   margin-bottom: $line-height-computed * 2;
   @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
   > .item-editor {
-//@extend %container-sm;
+    text-align: left;
   }
   > .item-image {
     text-align: center;
@@ -173,10 +140,6 @@
       .title {
         font-size: 1.6rem;
         @include ellipsis(#{1.6rem * 1.2}, 1);
-        @media (min-width: $screen-sm) {
-          font-size: 1.8rem;
-          @include ellipsis(#{1.8rem * 1.2}, 1);
-        }
       }
       .taxonomy {
       }

@@ -1,6 +1,6 @@
 <div class="works-container">
 <?php if (!is_post_type_archive('works') || is_tax()) : ?>
-  <?php get_template_part('templates/works', 'header'); ?>
+  <?php get_template_part('templates/page', 'header'); ?>
 <?php endif; ?>
 
 <?php if (!have_posts()) : ?>

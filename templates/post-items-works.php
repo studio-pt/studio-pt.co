@@ -1,5 +1,5 @@
 <div class="works-body">
-  <div class='works-header'>
+  <div class='section-header'>
     <h3>Latest</h3>
   </div>
 <?php

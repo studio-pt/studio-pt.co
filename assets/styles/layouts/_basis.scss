@@ -8,15 +8,19 @@ body {
   font-family: $font-family-sans-serif;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: 'palt' 1;
-  line-height: 1.75;
+  line-height: 1.6;
+  @media (max-width: $screen-xs-max) {
+    &.is-fixed { position: fixed; overflow: hidden; }
+  }
 }
 
 .main {
+  text-align: center;
   position: relative;
   z-index: 1;
-  padding-top: 10rem;
+  padding-top: 8rem;
   @media (min-width: $screen-sm) {
-    padding-top: 14rem;
+    padding-top: 10rem;
   }
 }
 

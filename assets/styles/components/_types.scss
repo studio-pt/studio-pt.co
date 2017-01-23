@@ -3,13 +3,25 @@
 .page-header {
   border: none;
   margin-top: 0;
-  text-align: center;
   padding-bottom: 0;
-  @media (min-width: $screen-sm) {
-    text-align: left;
-  }
+  text-align: center;
   > h1, h2, h3, h4, h5, h6 {
-    font-size: $font-size-h2;
     margin-top: 0;
+    font-size: $font-size-h3;
+    @media (min-width: $screen-sm) {
+      font-size: $font-size-h2;
+    }
+  }
+}
+
+.section-header {
+  margin: 2rem 0;
+  text-align: center;
+  > h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    font-size: $font-size-h4;
+    @media (min-width: $screen-md) {
+      font-size: $font-size-h3;
+    }
   }
 }
