@@ -10,7 +10,6 @@
         endforeach;
         echo '</ul>';
       ?>
-    </div>
     </header>
     <div class='entry-feature'>
       <?php // Feature

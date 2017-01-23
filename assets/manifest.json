@@ -3,8 +3,7 @@
     "main.js": {
       "files": [
         "scripts/main.js"
-      ],
-      "main": true
+      ]
     },
     "main.css": {
       "files": [
@@ -17,8 +16,10 @@
         "scripts/plugins.js"
       ]
     },
-    "jquery.js": {
-      "bower": ["jquery"]
+    "libs.js": {
+      "files": [
+        "scripts/libs.js"
+      ]
     }
   },
   "paths": {

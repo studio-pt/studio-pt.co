@@ -9,64 +9,68 @@
   }
 }
 
-@media (min-width: $screen-sm) {
-  body.is-menu-overflow .nav-primary {
-    position: absolute;
+.pagination {
+  clear: both;
+  text-align: center;
+}
+
+.nav-links {
+  .page-numbers {
+    display: inline-block;
+    padding: 1rem
+  }
+}
+
+@keyframes spin {
+  from { transform:rotate(0deg); }
+  to { transform:rotate(360deg); }
+}
+
+.ias-trigger, .ias-spinner {
+  clear: both;
+  margin-top: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.ias-trigger {
+  > a {
+    @extend %button-ghost;
+    height: 40px;
+    padding: 0 8rem;
+    line-height: 40px;
+    font-size: 1.6rem;
+  }
+}
+
+.ias-spinner {
+  > img {
+    width: 40px;
+    height: 40px;
+    animation: spin 1.5s linear infinite;
   }
 }
 
 .nav-primary {
-  z-index: 10;
-  @media (max-width: $screen-xs-max) {
-    display: none;
-    background: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    &.is-open { display: block; }
-    .nav {
-      width: calc(100vw - 40px);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      li {
-        text-align: center;
-      }
+  position: absolute;
+  top: 2.5rem;
+  right: $grid-gutter-width;
+  z-index: 99;
+  > .nav {
+    font-size: 2rem;
+    @media (max-width: $screen-sm) {
+      display: none;
     }
-  }
-  @media (min-width: $screen-sm) {
-    position: fixed;
-    top: $header-gutter;
-    right: $header-gutter;
-    margin-top: -10px;
-    li {
-      text-align: right;
-    }
-  }
-  li {
-    &.active {
-      > a { color: $text-color; }
-    }
-    a {
-      @extend %break-word;
-      font-size: 22px;
-      line-height: 1;
-      font-weight: 500;
-      color: $link-color;
-      padding: 10px 0;
-      &:hover {
-        color: $text-color;
-      }
+    > li {
+      display: inline-block;
+      margin-left: 1rem;
     }
   }
 }
 
 #icon-menu {
   position: fixed;
-  top: 22px;
+  top: 30px;
   right: $grid-gutter-width / 2;
   z-index: 999;
   width: 30px;

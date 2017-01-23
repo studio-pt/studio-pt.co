@@ -4,10 +4,11 @@
 }
 
 .works-body {
+  @include clearfix;
   @include make-row(0);
   .works-item {
-    @include make-xs-column(6, 0);
-    @include make-sm-column(4, 0);
+    @include make-sm-column(6, 0);
+    @include make-lg-column(4, 0);
   }
   .works-header {
     @media (min-width: $screen-sm) {
@@ -112,7 +113,7 @@
   margin-bottom: $line-height-computed * 2;
   @media (max-width: $screen-xs-max) { margin-bottom: $line-height-computed; }
   > .item-editor {
-    //@extend %container-sm;
+//@extend %container-sm;
   }
   > .item-image {
     text-align: center;
@@ -137,7 +138,7 @@
 
 .works-item {
   text-align: center;
-  margin-bottom: $grid-gutter-width / 2;
+  margin-bottom: $grid-gutter-width / 4;
   .item {
     &-poster {
       display: block;
@@ -150,7 +151,7 @@
       &:hover {
         .item-poster-inner {
           transform: scale(1.01);
-          opacity: .7;
+          opacity: .8;
         }
       }
       &-inner {
@@ -168,9 +169,14 @@
       }
     }
     &-summary {
+      padding: 0 ($grid-gutter-width / 2);
       .title {
-        font-size: 1.8rem;
-        @include ellipsis(#{$line-height-computed * 2}, 2);
+        font-size: 1.6rem;
+        @include ellipsis(#{1.6rem * 1.2}, 1);
+        @media (min-width: $screen-sm) {
+          font-size: 1.8rem;
+          @include ellipsis(#{1.8rem * 1.2}, 1);
+        }
       }
       .taxonomy {
       }

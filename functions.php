@@ -56,12 +56,3 @@ function set_mime_types($mimes) {
   $title = single_cat_title( '', false );
   return $title;
 });
-
-
-function nendebcom_header_title_tag(){
-  if (is_home() || is_front_page()) :
-    echo '<title>' . get_bloginfo('name') . '</title>';
-  endif;
-}
-remove_action( 'wp_head', '_wp_render_title_tag', 1 );
-add_action( 'wp_head', 'nendebcom_header_title_tag' );

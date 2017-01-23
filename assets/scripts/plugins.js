@@ -1,1 +1,1097 @@
-!function(e,t){"function"==typeof define&&define.amd?define(t):"object"==typeof exports?module.exports=t(require,exports,module):e.ScrollReveal=t()}(this,function(e,t,n){return function(){"use strict";var e,t,n;this.ScrollReveal=function(){function i(n){return"undefined"==typeof this||Object.getPrototypeOf(this)!==i.prototype?new i(n):(e=this,e.tools=new t,e.isSupported()?(e.tools.extend(e.defaults,n||{}),o(e.defaults),e.store={elements:{},containers:[]},e.sequences={},e.history=[],e.uid=0,e.initialized=!1):"undefined"!=typeof console&&null!==console,e)}function o(t){var n=t.container;return n&&"string"==typeof n?t.container=window.document.querySelector(n):(n&&!e.tools.isNode(n)&&(t.container=null),null==n&&(t.container=window.document.documentElement),t.container)}function r(){return++e.uid}function s(t,n){t.config?t.config=e.tools.extendClone(t.config,n):t.config=e.tools.extendClone(e.defaults,n),"top"===t.config.origin||"bottom"===t.config.origin?t.config.axis="Y":t.config.axis="X","top"!==t.config.origin&&"left"!==t.config.origin||(t.config.distance="-"+t.config.distance)}function a(e){var t=window.getComputedStyle(e.domEl);e.styles||(e.styles={transition:{},transform:{},computed:{}},e.styles.inline=e.domEl.getAttribute("style")||"",e.styles.inline+="; visibility: visible; ",e.styles.computed.opacity=t.opacity,t.transition&&"all 0s ease 0s"!=t.transition?e.styles.computed.transition=t.transition+", ":e.styles.computed.transition=""),e.styles.transition.instant=l(e,0),e.styles.transition.delayed=l(e,e.config.delay),e.styles.transform.initial=" -webkit-transform:",e.styles.transform.target=" -webkit-transform:",c(e),e.styles.transform.initial+="transform:",e.styles.transform.target+="transform:",c(e)}function l(e,t){var n=e.config;return"-webkit-transition: "+e.styles.computed.transition+"-webkit-transform "+n.duration/1e3+"s "+n.easing+" "+t/1e3+"s, opacity "+n.duration/1e3+"s "+n.easing+" "+t/1e3+"s; transition: "+e.styles.computed.transition+"transform "+n.duration/1e3+"s "+n.easing+" "+t/1e3+"s, opacity "+n.duration/1e3+"s "+n.easing+" "+t/1e3+"s; "}function c(e){var t=e.config,n=e.styles.transform;parseInt(t.distance)&&(n.initial+=" translate"+t.axis+"("+t.distance+")",n.target+=" translate"+t.axis+"(0)"),t.scale&&(n.initial+=" scale("+t.scale+")",n.target+=" scale(1)"),t.rotate.x&&(n.initial+=" rotateX("+t.rotate.x+"deg)",n.target+=" rotateX(0)"),t.rotate.y&&(n.initial+=" rotateY("+t.rotate.y+"deg)",n.target+=" rotateY(0)"),t.rotate.z&&(n.initial+=" rotateZ("+t.rotate.z+"deg)",n.target+=" rotateZ(0)"),n.initial+="; opacity: "+t.opacity+";",n.target+="; opacity: "+e.styles.computed.opacity+";"}function f(t){var n=t.config.container;n&&-1==e.store.containers.indexOf(n)&&e.store.containers.push(t.config.container),e.store.elements[t.id]=t}function u(t,n,i){var o={selector:t,config:n,interval:i};e.history.push(o)}function d(){if(e.isSupported()){p();for(var t=0;t<e.store.containers.length;t++)e.store.containers[t].addEventListener("scroll",y),e.store.containers[t].addEventListener("resize",y);e.initialized||(window.addEventListener("scroll",y),window.addEventListener("resize",y),e.initialized=!0)}return e}function y(){n(p)}function m(){var t,n,i,o;e.tools.forOwn(e.sequences,function(r){o=e.sequences[r],t=!1;for(var s=0;s<o.elemIds.length;s++)i=o.elemIds[s],n=e.store.elements[i],O(n)&&!t&&(t=!0);o.active=t})}function p(){var t,n;m(),e.tools.forOwn(e.store.elements,function(i){n=e.store.elements[i],t=b(n),v(n)?(t?n.domEl.setAttribute("style",n.styles.inline+n.styles.transform.target+n.styles.transition.delayed):n.domEl.setAttribute("style",n.styles.inline+n.styles.transform.target+n.styles.transition.instant),w("reveal",n,t),n.revealing=!0,n.seen=!0,n.sequence&&g(n,t)):h(n)&&(n.domEl.setAttribute("style",n.styles.inline+n.styles.transform.initial+n.styles.transition.instant),w("reset",n),n.revealing=!1)})}function g(t,n){var i=0,o=0,r=e.sequences[t.sequence.id];r.blocked=!0,n&&"onload"==t.config.useDelay&&(o=t.config.delay),t.sequence.timer&&(i=Math.abs(t.sequence.timer.started-new Date),window.clearTimeout(t.sequence.timer)),t.sequence.timer={started:new Date},t.sequence.timer.clock=window.setTimeout(function(){r.blocked=!1,t.sequence.timer=null,y()},Math.abs(r.interval)+o-i)}function w(e,t,n){var i=0,o=0,r="after";switch(e){case"reveal":o=t.config.duration,n&&(o+=t.config.delay),r+="Reveal";break;case"reset":o=t.config.duration,r+="Reset"}t.timer&&(i=Math.abs(t.timer.started-new Date),window.clearTimeout(t.timer.clock)),t.timer={started:new Date},t.timer.clock=window.setTimeout(function(){t.config[r](t.domEl),t.timer=null},o-i)}function v(t){if(t.sequence){var n=e.sequences[t.sequence.id];return n.active&&!n.blocked&&!t.revealing&&!t.disabled}return O(t)&&!t.revealing&&!t.disabled}function b(t){var n=t.config.useDelay;return"always"===n||"onload"===n&&!e.initialized||"once"===n&&!t.seen}function h(t){if(t.sequence){var n=e.sequences[t.sequence.id];return!n.active&&t.config.reset&&t.revealing&&!t.disabled}return!O(t)&&t.config.reset&&t.revealing&&!t.disabled}function x(e){return{width:e.clientWidth,height:e.clientHeight}}function q(e){if(e&&e!==window.document.documentElement){var t=E(e);return{x:e.scrollLeft+t.left,y:e.scrollTop+t.top}}return{x:window.pageXOffset,y:window.pageYOffset}}function E(e){var t=0,n=0,i=e.offsetHeight,o=e.offsetWidth;do isNaN(e.offsetTop)||(t+=e.offsetTop),isNaN(e.offsetLeft)||(n+=e.offsetLeft);while(e=e.offsetParent);return{top:t,left:n,height:i,width:o}}function O(e){function t(){var t=c+a*s,n=f+l*s,i=u-a*s,y=d-l*s,m=r.y+e.config.viewOffset.top,p=r.x+e.config.viewOffset.left,g=r.y-e.config.viewOffset.bottom+o.height,w=r.x-e.config.viewOffset.right+o.width;return g>t&&i>m&&n>p&&w>y}function n(){return"fixed"===window.getComputedStyle(e.domEl).position}var i=E(e.domEl),o=x(e.config.container),r=q(e.config.container),s=e.config.viewFactor,a=i.height,l=i.width,c=i.top,f=i.left,u=c+a,d=f+l;return t()||n()}return i.prototype.defaults={origin:"bottom",distance:"20px",duration:500,delay:0,rotate:{x:0,y:0,z:0},opacity:0,scale:.9,easing:"cubic-bezier(0.6, 0.2, 0.1, 1)",container:null,mobile:!0,reset:!1,useDelay:"always",viewFactor:.2,viewOffset:{top:0,right:0,bottom:0,left:0},afterReveal:function(e){},afterReset:function(e){}},i.prototype.isSupported=function(){var e=document.documentElement.style;return"WebkitTransition"in e&&"WebkitTransform"in e||"transition"in e&&"transform"in e},i.prototype.reveal=function(t,n,i,l){var c,y,m,p,g,w;if(c=n&&n.container?o(n):e.defaults.container,y=e.tools.isNode(t)?[t]:Array.prototype.slice.call(c.querySelectorAll(t)),!y.length)return e;n&&"number"==typeof n&&(i=n,n={}),i&&"number"==typeof i&&(w=r(),g=e.sequences[w]={id:w,interval:i,elemIds:[],active:!1});for(var v=0;v<y.length;v++)p=y[v].getAttribute("data-sr-id"),p?m=e.store.elements[p]:(m={id:r(),domEl:y[v],seen:!1,revealing:!1},m.domEl.setAttribute("data-sr-id",m.id)),g&&(m.sequence={id:g.id,index:g.elemIds.length},g.elemIds.push(m.id)),s(m,n||{}),a(m),f(m),e.tools.isMobile()&&!m.config.mobile||!e.isSupported()?(m.domEl.setAttribute("style",m.styles.inline),m.disabled=!0):m.revealing||m.domEl.setAttribute("style",m.styles.inline+m.styles.transform.initial);return!l&&e.isSupported()&&(u(t,n),e.initTimeout&&window.clearTimeout(e.initTimeout),e.initTimeout=window.setTimeout(d,0)),e},i.prototype.sync=function(){if(e.history.length&&e.isSupported()){for(var t=0;t<e.history.length;t++){var n=e.history[t];e.reveal(n.selector,n.config,n.interval,!0)}d()}return e},i}(),t=function(){function e(){}return e.prototype.isObject=function(e){return null!==e&&"object"==typeof e&&e.constructor==Object},e.prototype.isNode=function(e){return"object"==typeof Node?e instanceof Node:e&&"object"==typeof e&&"number"==typeof e.nodeType&&"string"==typeof e.nodeName},e.prototype.forOwn=function(e,t){if(!this.isObject(e))throw new TypeError('Expected "object", but received "'+typeof e+'".');for(var n in e)e.hasOwnProperty(n)&&t(n)},e.prototype.extend=function(e,t){return this.forOwn(t,function(n){this.isObject(t[n])?(e[n]&&this.isObject(e[n])||(e[n]={}),this.extend(e[n],t[n])):e[n]=t[n]}.bind(this)),e},e.prototype.extendClone=function(e,t){return this.extend(this.extend({},e),t)},e.prototype.isMobile=function(){return/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)},e}(),n=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame}.call(this),this.ScrollReveal});
+/*! FEATURE.JS 1.0.1, http://featurejs.com */
+!function(e,t,n){"use strict";var r=t.documentElement,i={create:function(e){return t.createElement(e)},old:!!/(Android\s(1.|2.))|(Silk\/1.)/i.test(navigator.userAgent),pfx:function(){var e=t.createElement("dummy").style,r=["Webkit","Moz","O","ms"],i={};return function(t){if("undefined"==typeof i[t]){var c=t.charAt(0).toUpperCase()+t.substr(1),a=(t+" "+r.join(c+" ")+c).split(" ");i[t]=null;for(var o in a)if(e[a[o]]!==n){i[t]=a[o];break}}return i[t]}}()},c={css3Dtransform:function(){var e=!i.old&&null!==i.pfx("perspective");return!!e}(),cssTransform:function(){var e=!i.old&&null!==i.pfx("transformOrigin");return!!e}(),cssTransition:function(){var e=null!==i.pfx("transition");return!!e}(),addEventListener:!!e.addEventListener,querySelectorAll:!!t.querySelectorAll,matchMedia:!!e.matchMedia,deviceMotion:"DeviceMotionEvent"in e,deviceOrientation:"DeviceOrientationEvent"in e,contextMenu:"contextMenu"in r&&"HTMLMenuItemElement"in e,classList:"classList"in r,placeholder:"placeholder"in i.create("input"),localStorage:function(){var e="x";try{return localStorage.setItem(e,e),localStorage.removeItem(e),!0}catch(t){return!1}}(),historyAPI:e.history&&"pushState"in e.history,serviceWorker:"serviceWorker"in navigator,viewportUnit:function(e){try{e.style.width="1vw";var t=""!==e.style.width;return!!t}catch(n){return!1}}(i.create("dummy")),remUnit:function(e){try{e.style.width="1rem";var t=""!==e.style.width;return!!t}catch(n){return!1}}(i.create("dummy")),canvas:function(e){return!(!e.getContext||!e.getContext("2d"))}(i.create("canvas")),svg:!!t.createElementNS&&!!t.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect,webGL:function(t){try{return!(!e.WebGLRenderingContext||!t.getContext("webgl")&&!t.getContext("experimental-webgl"))}catch(n){return!1}}(i.create("canvas")),cors:"XMLHttpRequest"in e&&"withCredentials"in new XMLHttpRequest,touch:!!("ontouchstart"in e||e.navigator&&e.navigator.msPointerEnabled&&e.MSGesture||e.DocumentTouch&&t instanceof DocumentTouch),async:"async"in i.create("script"),defer:"defer"in i.create("script"),geolocation:"geolocation"in navigator,srcset:"srcset"in i.create("img"),sizes:"sizes"in i.create("img"),pictureElement:"HTMLPictureElement"in e,testAll:function(){var e=" js";for(var t in this)"testAll"!==t&&"constructor"!==t&&this[t]&&(e+=" "+t);r.className+=e.toLowerCase()}};e.feature=c}(window,document);
+
+/**
+ * Infinite Ajax Scroll v2.2.1
+ * A jQuery plugin for infinite scrolling
+ * http://infiniteajaxscroll.com
+ *
+ * Commercial use requires one-time purchase of a commercial license
+ * http://infiniteajaxscroll.com/docs/license.html
+ *
+ * Non-commercial use is licensed under the MIT License
+ *
+ * Copyright 2014-2015 Webcreate (Jeroen Fiege)
+ */
+
+(function($) {
+
+  'use strict';
+
+  var UNDETERMINED_SCROLLOFFSET = -1;
+
+  var IAS = function($element, options) {
+    this.itemsContainerSelector = options.container;
+    this.itemSelector = options.item;
+    this.nextSelector = options.next;
+    this.paginationSelector = options.pagination;
+    this.$scrollContainer = $element;
+    this.$container = (window === $element.get(0) ? $(document) : $element);
+    this.defaultDelay = options.delay;
+    this.negativeMargin = options.negativeMargin;
+    this.nextUrl = null;
+    this.isBound = false;
+    this.isPaused = false;
+    this.isInitialized = false;
+    this.listeners = {
+      next:     new IASCallbacks(),
+      load:     new IASCallbacks(),
+      loaded:   new IASCallbacks(),
+      render:   new IASCallbacks(),
+      rendered: new IASCallbacks(),
+      scroll:   new IASCallbacks(),
+      noneLeft: new IASCallbacks(),
+      ready:    new IASCallbacks()
+    };
+    this.extensions = [];
+
+    /**
+     * Scroll event handler
+     *
+     * Note: calls to this functions should be throttled
+     *
+     * @private
+     */
+    this.scrollHandler = function() {
+      // the throttle method can call the scrollHandler even thought we have called unbind()
+      if (!this.isBound || this.isPaused) {
+        return;
+      }
+
+      var currentScrollOffset = this.getCurrentScrollOffset(this.$scrollContainer),
+          scrollThreshold = this.getScrollThreshold()
+      ;
+
+      // invalid scrollThreshold. The DOM might not have loaded yet...
+      if (UNDETERMINED_SCROLLOFFSET == scrollThreshold) {
+        return;
+      }
+
+      this.fire('scroll', [currentScrollOffset, scrollThreshold]);
+
+      if (currentScrollOffset >= scrollThreshold) {
+        this.next();
+      }
+    };
+
+    /**
+     * Returns the items container currently in the DOM
+     *
+     * @private
+     * @returns {object}
+     */
+    this.getItemsContainer = function() {
+      return $(this.itemsContainerSelector);
+    };
+
+    /**
+     * Returns the last item currently in the DOM
+     *
+     * @private
+     * @returns {object}
+     */
+    this.getLastItem = function() {
+      return $(this.itemSelector, this.getItemsContainer().get(0)).last();
+    };
+
+    /**
+     * Returns the first item currently in the DOM
+     *
+     * @private
+     * @returns {object}
+     */
+    this.getFirstItem = function() {
+      return $(this.itemSelector, this.getItemsContainer().get(0)).first();
+    };
+
+    /**
+     * Returns scroll threshold. This threshold marks the line from where
+     * IAS should start loading the next page.
+     *
+     * @private
+     * @param negativeMargin defaults to {this.negativeMargin}
+     * @return {number}
+     */
+    this.getScrollThreshold = function(negativeMargin) {
+      var $lastElement;
+
+      negativeMargin = negativeMargin || this.negativeMargin;
+      negativeMargin = (negativeMargin >= 0 ? negativeMargin * -1 : negativeMargin);
+
+      $lastElement = this.getLastItem();
+
+      // if the don't have a last element, the DOM might not have been loaded,
+      // or the selector is invalid
+      if (0 === $lastElement.length) {
+        return UNDETERMINED_SCROLLOFFSET;
+      }
+
+      return ($lastElement.offset().top + $lastElement.height() + negativeMargin);
+    };
+
+    /**
+     * Returns current scroll offset for the given scroll container
+     *
+     * @private
+     * @param $container
+     * @returns {number}
+     */
+    this.getCurrentScrollOffset = function($container) {
+      var scrollTop = 0,
+          containerHeight = $container.height();
+
+      if (window === $container.get(0))  {
+        scrollTop = $container.scrollTop();
+      } else {
+        scrollTop = $container.offset().top;
+      }
+
+      // compensate for iPhone
+      if (navigator.platform.indexOf("iPhone") != -1 || navigator.platform.indexOf("iPod") != -1) {
+        containerHeight += 80;
+      }
+
+      return (scrollTop + containerHeight);
+    };
+
+    /**
+     * Returns the url for the next page
+     *
+     * @private
+     */
+    this.getNextUrl = function(container) {
+      container = container || this.$container;
+
+      // always take the last matching item
+      return $(this.nextSelector, container).last().attr('href');
+    };
+
+    /**
+     * Loads a page url
+     *
+     * @param url
+     * @param callback
+     * @param delay
+     * @returns {object}        jsXhr object
+     */
+    this.load = function(url, callback, delay) {
+      var self = this,
+          $itemContainer,
+          items = [],
+          timeStart = +new Date(),
+          timeDiff;
+
+      delay = delay || this.defaultDelay;
+
+      var loadEvent = {
+        url: url
+      };
+
+      self.fire('load', [loadEvent]);
+
+      return $.get(loadEvent.url, null, $.proxy(function(data) {
+        $itemContainer = $(this.itemsContainerSelector, data).eq(0);
+        if (0 === $itemContainer.length) {
+          $itemContainer = $(data).filter(this.itemsContainerSelector).eq(0);
+        }
+
+        if ($itemContainer) {
+          $itemContainer.find(this.itemSelector).each(function() {
+            items.push(this);
+          });
+        }
+
+        self.fire('loaded', [data, items]);
+
+        if (callback) {
+          timeDiff = +new Date() - timeStart;
+          if (timeDiff < delay) {
+            setTimeout(function() {
+              callback.call(self, data, items);
+            }, delay - timeDiff);
+          } else {
+            callback.call(self, data, items);
+          }
+        }
+      }, self), 'html');
+    };
+
+    /**
+     * Renders items
+     *
+     * @param callback
+     * @param items
+     */
+    this.render = function(items, callback) {
+      var self = this,
+          $lastItem = this.getLastItem(),
+          count = 0;
+
+      var promise = this.fire('render', [items]);
+
+      promise.done(function() {
+        $(items).hide(); // at first, hide it so we can fade it in later
+
+        $lastItem.after(items);
+
+        $(items).fadeIn(400, function() {
+          // complete callback get fired for each item,
+          // only act on the last item
+          if (++count < items.length) {
+            return;
+          }
+
+          self.fire('rendered', [items]);
+
+          if (callback) {
+            callback();
+          }
+        });
+      });
+    };
+
+    /**
+     * Hides the pagination
+     */
+    this.hidePagination = function() {
+      if (this.paginationSelector) {
+        $(this.paginationSelector, this.$container).hide();
+      }
+    };
+
+    /**
+     * Restores the pagination
+     */
+    this.restorePagination = function() {
+      if (this.paginationSelector) {
+        $(this.paginationSelector, this.$container).show();
+      }
+    };
+
+    /**
+     * Throttles a method
+     *
+     * Adopted from Ben Alman's jQuery throttle / debounce plugin
+     *
+     * @param callback
+     * @param delay
+     * @return {object}
+     */
+    this.throttle = function(callback, delay) {
+      var lastExecutionTime = 0,
+          wrapper,
+          timerId
+      ;
+
+      wrapper = function() {
+        var that = this,
+            args = arguments,
+            diff = +new Date() - lastExecutionTime;
+
+        function execute() {
+          lastExecutionTime = +new Date();
+          callback.apply(that, args);
+        }
+
+        if (!timerId) {
+          execute();
+        } else {
+          clearTimeout(timerId);
+        }
+
+        if (diff > delay) {
+          execute();
+        } else {
+          timerId = setTimeout(execute, delay);
+        }
+      };
+
+      if ($.guid) {
+        wrapper.guid = callback.guid = callback.guid || $.guid++;
+      }
+
+      return wrapper;
+    };
+
+    /**
+     * Fires an event with the ability to cancel further processing. This
+     * can be achieved by returning false in a listener.
+     *
+     * @param event
+     * @param args
+     * @returns {*}
+     */
+    this.fire = function(event, args) {
+      return this.listeners[event].fireWith(this, args);
+    };
+
+    /**
+     * Pauses the scroll handler
+     *
+     * Note: internal use only, if you need to pause IAS use `unbind` method.
+     *
+     * @private
+     */
+    this.pause = function() {
+      this.isPaused = true;
+    };
+
+    /**
+     * Resumes the scroll handler
+     *
+     * Note: internal use only, if you need to resume IAS use `bind` method.
+     *
+     * @private
+     */
+    this.resume = function() {
+      this.isPaused = false;
+    };
+
+    return this;
+  };
+
+  /**
+   * Initialize IAS
+   *
+   * Note: Should be called when the document is ready
+   *
+   * @public
+   */
+  IAS.prototype.initialize = function() {
+    if (this.isInitialized) {
+      return false;
+    }
+
+    var supportsOnScroll = (!!('onscroll' in this.$scrollContainer.get(0))),
+        currentScrollOffset = this.getCurrentScrollOffset(this.$scrollContainer),
+        scrollThreshold = this.getScrollThreshold();
+
+    // bail out when the browser doesn't support the scroll event
+    if (!supportsOnScroll) {
+      return false;
+    }
+
+    this.hidePagination();
+    this.bind();
+
+    this.fire('ready');
+
+    this.nextUrl = this.getNextUrl();
+
+    // start loading next page if content is shorter than page fold
+    if (currentScrollOffset >= scrollThreshold) {
+      this.next();
+
+      // flag as initialized when rendering is completed
+      this.one('rendered', function() {
+        this.isInitialized = true;
+      });
+    } else {
+      this.isInitialized = true;
+    }
+
+    return this;
+  };
+
+  /**
+   * Reinitializes IAS, for example after an ajax page update
+   *
+   * @public
+   */
+  IAS.prototype.reinitialize = function () {
+    this.isInitialized = false;
+
+    this.unbind();
+    this.initialize();
+  };
+
+  /**
+   * Binds IAS to DOM events
+   *
+   * @public
+   */
+  IAS.prototype.bind = function() {
+    if (this.isBound) {
+      return;
+    }
+
+    this.$scrollContainer.on('scroll', $.proxy(this.throttle(this.scrollHandler, 150), this));
+
+    for (var i = 0, l = this.extensions.length; i < l; i++) {
+      this.extensions[i].bind(this);
+    }
+
+    this.isBound = true;
+    this.resume();
+  };
+
+  /**
+   * Unbinds IAS to events
+   *
+   * @public
+   */
+  IAS.prototype.unbind = function() {
+    if (!this.isBound) {
+      return;
+    }
+
+    this.$scrollContainer.off('scroll', this.scrollHandler);
+
+    // notify extensions about unbinding
+    for (var i = 0, l = this.extensions.length; i < l; i++) {
+      if (typeof this.extensions[i]['unbind'] != 'undefined') {
+        this.extensions[i].unbind(this);
+      }
+    }
+
+    this.isBound = false;
+  };
+
+  /**
+   * Destroys IAS instance
+   *
+   * @public
+   */
+  IAS.prototype.destroy = function() {
+    this.unbind();
+
+    this.$scrollContainer.data('ias', null);
+  };
+
+  /**
+   * Registers an eventListener
+   *
+   * Note: chainable
+   *
+   * @public
+   * @returns IAS
+   */
+  IAS.prototype.on = function(event, callback, priority) {
+    if (typeof this.listeners[event] == 'undefined') {
+      throw new Error('There is no event called "' + event + '"');
+    }
+
+    priority = priority || 0;
+
+    this.listeners[event].add($.proxy(callback, this), priority);
+
+    return this;
+  };
+
+  /**
+   * Registers an eventListener which only gets
+   * fired once.
+   *
+   * Note: chainable
+   *
+   * @public
+   * @returns IAS
+   */
+  IAS.prototype.one = function(event, callback) {
+    var self = this;
+
+    var remover = function() {
+      self.off(event, callback);
+      self.off(event, remover);
+    };
+
+    this.on(event, callback);
+    this.on(event, remover);
+
+    return this;
+  };
+
+  /**
+   * Removes an eventListener
+   *
+   * Note: chainable
+   *
+   * @public
+   * @returns IAS
+   */
+  IAS.prototype.off = function(event, callback) {
+    if (typeof this.listeners[event] == 'undefined') {
+      throw new Error('There is no event called "' + event + '"');
+    }
+
+    this.listeners[event].remove(callback);
+
+    return this;
+  };
+
+  /**
+   * Load the next page
+   *
+   * @public
+   */
+  IAS.prototype.next = function() {
+    var url = this.nextUrl,
+        self = this;
+
+    this.pause();
+
+    if (!url) {
+      this.fire('noneLeft', [this.getLastItem()]);
+      this.listeners['noneLeft'].disable(); // disable it so it only fires once
+
+      self.resume();
+
+      return false;
+    }
+
+    var promise = this.fire('next', [url]);
+
+    promise.done(function() {
+      self.load(url, function(data, items) {
+        self.render(items, function() {
+          self.nextUrl = self.getNextUrl(data);
+
+          self.resume();
+        });
+      });
+    });
+
+    promise.fail(function() {
+      self.resume();
+    });
+
+    return true;
+  };
+
+  /**
+   * Adds an extension
+   *
+   * @public
+   */
+  IAS.prototype.extension = function(extension) {
+    if (typeof extension['bind'] == 'undefined') {
+      throw new Error('Extension doesn\'t have required method "bind"');
+    }
+
+    if (typeof extension['initialize'] != 'undefined') {
+      extension.initialize(this);
+    }
+
+    this.extensions.push(extension);
+
+    if (this.isInitialized) {
+      this.reinitialize();
+    }
+
+    return this;
+  };
+
+  /**
+   * Shortcut. Sets the window as scroll container.
+   *
+   * @public
+   * @param option
+   * @returns {*}
+   */
+  $.ias = function(option) {
+    var $window = $(window);
+
+    return $window.ias.apply($window, arguments);
+  };
+
+  /**
+   * jQuery plugin initialization
+   *
+   * @public
+   * @param option
+   * @returns {*} the last IAS instance will be returned
+   */
+  $.fn.ias = function(option) {
+    var args = Array.prototype.slice.call(arguments);
+    var retval = this;
+
+    this.each(function() {
+      var $this = $(this),
+          instance = $this.data('ias'),
+          options = $.extend({}, $.fn.ias.defaults, $this.data(), typeof option == 'object' && option)
+          ;
+
+      // set a new instance as data
+      if (!instance) {
+        $this.data('ias', (instance = new IAS($this, options)));
+
+        $(document).ready($.proxy(instance.initialize, instance));
+      }
+
+      // when the plugin is called with a method
+      if (typeof option === 'string') {
+        if (typeof instance[option] !== 'function') {
+          throw new Error('There is no method called "' + option + '"');
+        }
+
+        args.shift(); // remove first argument ('option')
+        instance[option].apply(instance, args);
+      }
+
+      retval = instance;
+    });
+
+    return retval;
+  };
+
+  /**
+   * Plugin defaults
+   *
+   * @public
+   * @type {object}
+   */
+  $.fn.ias.defaults = {
+    item: '.item',
+    container: '.listing',
+    next: '.next',
+    pagination: false,
+    delay: 600,
+    negativeMargin: 10
+  };
+})(jQuery);
+
+/**
+ * IASCallbacks
+ * http://infiniteajaxscroll.com
+ *
+ * This file is part of the Infinite AJAX Scroll package
+ *
+ * Copyright 2014-2015 Webcreate (Jeroen Fiege)
+ */
+
+var IASCallbacks = function () {
+  this.list = [];
+  this.fireStack = [];
+  this.isFiring = false;
+  this.isDisabled = false;
+
+  /**
+   * Calls all added callbacks
+   *
+   * @private
+   * @param args
+   */
+  this.fire = function (args) {
+    var context = args[0],
+        deferred = args[1],
+        callbackArguments = args[2];
+
+    this.isFiring = true;
+
+    for (var i = 0, l = this.list.length; i < l; i++) {
+      if (this.list[i] != undefined) {
+        if (false === this.list[i].fn.apply(context, callbackArguments)) {
+          deferred.reject();
+
+          break;
+        }
+      }
+    }
+
+    this.isFiring = false;
+
+    deferred.resolve();
+
+    if (this.fireStack.length) {
+      this.fire(this.fireStack.shift());
+    }
+  };
+
+  /**
+   * Returns index of the callback in the list in a similar way as
+   * the indexOf function.
+   *
+   * @param callback
+   * @param {number} index index to start the search from
+   * @returns {number}
+   */
+  this.inList = function (callback, index) {
+    index = index || 0;
+
+    for (var i = index, length = this.list.length; i < length; i++) {
+      if (this.list[i].fn === callback || (callback.guid && this.list[i].fn.guid && callback.guid === this.list[i].fn.guid)) {
+        return i;
+      }
+    }
+
+    return -1;
+  };
+
+  return this;
+};
+
+IASCallbacks.prototype = {
+  /**
+   * Adds a callback
+   *
+   * @param callback
+   * @returns {IASCallbacks}
+   * @param priority
+   */
+  add: function (callback, priority) {
+    var callbackObject = {fn: callback, priority: priority};
+
+    priority = priority || 0;
+
+    for (var i = 0, length = this.list.length; i < length; i++) {
+      if (priority > this.list[i].priority) {
+        this.list.splice(i, 0, callbackObject);
+
+        return this;
+      }
+    }
+
+    this.list.push(callbackObject);
+
+    return this;
+  },
+
+  /**
+   * Removes a callback
+   *
+   * @param callback
+   * @returns {IASCallbacks}
+   */
+  remove: function (callback) {
+    var index = 0;
+
+    while (( index = this.inList(callback, index) ) > -1) {
+      this.list.splice(index, 1);
+    }
+
+    return this;
+  },
+
+  /**
+   * Checks if callback is added
+   *
+   * @param callback
+   * @returns {*}
+   */
+  has: function (callback) {
+    return (this.inList(callback) > -1);
+  },
+
+
+  /**
+   * Calls callbacks with a context
+   *
+   * @param context
+   * @param args
+   * @returns {object|void}
+   */
+  fireWith: function (context, args) {
+    var deferred = jQuery.Deferred();
+
+    if (this.isDisabled) {
+      return deferred.reject();
+    }
+
+    args = args || [];
+    args = [ context, deferred, args.slice ? args.slice() : args ];
+
+    if (this.isFiring) {
+      this.fireStack.push(args);
+    } else {
+      this.fire(args);
+    }
+
+    return deferred;
+  },
+
+  /**
+   * Disable firing of new events
+   */
+  disable: function () {
+    this.isDisabled = true;
+  },
+
+  /**
+   * Enable firing of new events
+   */
+  enable: function () {
+    this.isDisabled = false;
+  }
+};
+
+/**
+ * IAS Spinner Extension
+ * An IAS extension to show a spinner when loading
+ * http://infiniteajaxscroll.com
+ *
+ * This file is part of the Infinite AJAX Scroll package
+ *
+ * Copyright 2014-2015 Webcreate (Jeroen Fiege)
+ */
+
+var IASSpinnerExtension = function(options) {
+  options = jQuery.extend({}, this.defaults, options);
+
+  this.ias = null;
+  this.uid = new Date().getTime();
+  this.src = options.src;
+  this.html = (options.html).replace('{src}', this.src);
+
+  /**
+   * Shows spinner
+   */
+  this.showSpinner = function() {
+    var $spinner = this.getSpinner() || this.createSpinner(),
+        $lastItem = this.ias.getLastItem();
+
+    $lastItem.after($spinner);
+    $spinner.fadeIn();
+  };
+
+  /**
+   * Shows spinner
+   */
+  this.showSpinnerBefore = function() {
+    var $spinner = this.getSpinner() || this.createSpinner(),
+        $firstItem = this.ias.getFirstItem();
+
+    $firstItem.before($spinner);
+    $spinner.fadeIn();
+  };
+
+  /**
+   * Removes spinner
+   */
+  this.removeSpinner = function() {
+    if (this.hasSpinner()) {
+      this.getSpinner().remove();
+    }
+  };
+
+  /**
+   * @returns {jQuery|boolean}
+   */
+  this.getSpinner = function() {
+    var $spinner = jQuery('#ias_spinner_' + this.uid);
+
+    if ($spinner.length > 0) {
+      return $spinner;
+    }
+
+    return false;
+  };
+
+  /**
+   * @returns {boolean}
+   */
+  this.hasSpinner = function() {
+    var $spinner = jQuery('#ias_spinner_' + this.uid);
+
+    return ($spinner.length > 0);
+  };
+
+  /**
+   * @returns {jQuery}
+   */
+  this.createSpinner = function() {
+    var $spinner = jQuery(this.html).attr('id', 'ias_spinner_' + this.uid);
+
+    $spinner.hide();
+
+    return $spinner;
+  };
+
+  return this;
+};
+
+/**
+ * @public
+ */
+IASSpinnerExtension.prototype.bind = function(ias) {
+  this.ias = ias;
+
+  ias.on('next', jQuery.proxy(this.showSpinner, this));
+  ias.on('render', jQuery.proxy(this.removeSpinner, this));
+
+  try {
+    ias.on('prev', jQuery.proxy(this.showSpinnerBefore, this));
+  } catch (exception) {}
+};
+
+/**
+ * @public
+ * @param {object} ias
+ */
+IASSpinnerExtension.prototype.unbind = function(ias) {
+  ias.off('next', this.showSpinner);
+  ias.off('render', this.removeSpinner);
+
+  try {
+    ias.off('prev', this.showSpinnerBefore);
+  } catch (exception) {}
+};
+
+/**
+ * @public
+ */
+IASSpinnerExtension.prototype.defaults = {
+  src: 'data:image/gif;base64,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',
+  html: '<div class="ias-spinner" style="text-align: center;"><img src="{src}"/></div>'
+};
+
+/**
+ * IAS Trigger Extension
+ * An IAS extension to show a trigger link to load the next page
+ * http://infiniteajaxscroll.com
+ *
+ * This file is part of the Infinite AJAX Scroll package
+ *
+ * Copyright 2014-2015 Webcreate (Jeroen Fiege)
+ */
+
+var IASTriggerExtension = function(options) {
+  options = jQuery.extend({}, this.defaults, options);
+
+  this.ias = null;
+  this.html = (options.html).replace('{text}', options.text);
+  this.htmlPrev = (options.htmlPrev).replace('{text}', options.textPrev);
+  this.enabled = true;
+  this.count = 0;
+  this.offset = options.offset;
+  this.$triggerNext = null;
+  this.$triggerPrev = null;
+
+  /**
+   * Shows trigger for next page
+   */
+  this.showTriggerNext = function() {
+    if (!this.enabled) {
+      return true;
+    }
+
+    if (false === this.offset || ++this.count < this.offset) {
+      return true;
+    }
+
+    var $trigger = this.$triggerNext || (this.$triggerNext = this.createTrigger(this.next, this.html));
+    var $lastItem = this.ias.getLastItem();
+
+    $lastItem.after($trigger);
+    $trigger.fadeIn();
+
+    return false;
+  };
+
+  /**
+   * Shows trigger for previous page
+   */
+  this.showTriggerPrev = function() {
+    if (!this.enabled) {
+      return true;
+    }
+
+    var $trigger = this.$triggerPrev || (this.$triggerPrev = this.createTrigger(this.prev, this.htmlPrev));
+    var $firstItem = this.ias.getFirstItem();
+
+    $firstItem.before($trigger);
+    $trigger.fadeIn();
+
+    return false;
+  };
+
+  this.onRendered = function() {
+    this.enabled = true;
+  };
+
+  /**
+   * @param clickCallback
+   * @returns {*|jQuery}
+   * @param {string} html
+   */
+  this.createTrigger = function(clickCallback, html) {
+    var uid = (new Date()).getTime(),
+        $trigger;
+
+    html = html || this.html;
+    $trigger = jQuery(html).attr('id', 'ias_trigger_' + uid);
+
+    $trigger.hide();
+    $trigger.on('click', jQuery.proxy(clickCallback, this));
+
+    return $trigger;
+  };
+
+  return this;
+};
+
+/**
+ * @public
+ * @param {object} ias
+ */
+IASTriggerExtension.prototype.bind = function(ias) {
+  var self = this;
+
+  this.ias = ias;
+
+  ias.on('next', jQuery.proxy(this.showTriggerNext, this), this.priority);
+  ias.on('rendered', jQuery.proxy(this.onRendered, this), this.priority);
+
+  try {
+    ias.on('prev', jQuery.proxy(this.showTriggerPrev, this), this.priority);
+  } catch (exception) {}
+};
+
+/**
+ * @public
+ * @param {object} ias
+ */
+IASTriggerExtension.prototype.unbind = function(ias) {
+  ias.off('next', this.showTriggerNext);
+  ias.off('rendered', this.onRendered);
+
+  try {
+    ias.off('prev', this.showTriggerPrev);
+  } catch (exception) {}
+};
+
+/**
+ * @public
+ */
+IASTriggerExtension.prototype.next = function() {
+  this.enabled = false;
+  this.ias.pause();
+
+  if (this.$triggerNext) {
+    this.$triggerNext.remove();
+    this.$triggerNext = null;
+  }
+
+  this.ias.next();
+};
+
+/**
+ * @public
+ */
+IASTriggerExtension.prototype.prev = function() {
+  this.enabled = false;
+  this.ias.pause();
+
+  if (this.$triggerPrev) {
+    this.$triggerPrev.remove();
+    this.$triggerPrev = null;
+  }
+
+  this.ias.prev();
+};
+
+/**
+ * @public
+ */
+IASTriggerExtension.prototype.defaults = {
+  text: 'Load more items',
+  html: '<div class="ias-trigger ias-trigger-next" style="text-align: center; cursor: pointer;"><a>{text}</a></div>',
+  textPrev: 'Load previous items',
+  htmlPrev: '<div class="ias-trigger ias-trigger-prev" style="text-align: center; cursor: pointer;"><a>{text}</a></div>',
+  offset: 0
+};
+
+/**
+ * @public
+ * @type {number}
+ */
+IASTriggerExtension.prototype.priority = 1000;

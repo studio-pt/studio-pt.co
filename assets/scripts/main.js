@@ -14,57 +14,6 @@
 
   var MAIN = {};
 
-  MAIN.setMenu = function()
-  {
-    var m = $('#icon-menu'),
-        d = $('.dropdown-toggle'),
-        n = $('.nav-primary'),
-        w = $(window),
-        b = $('body'),
-        menuAction;
-
-    function togglePos() {
-      var g = 40,
-          wh = w.height();
-      n.each(function(i) {
-        var nh = $(this).height();
-        if (wh <= nh + (g * 2)) {
-          $('body').addClass('is-menu-overflow');
-        } else {
-          $('body').removeClass('is-menu-overflow');
-        }
-      });
-    }
-
-    function checkHeight() {
-      d.each(function() {
-        var dh = $(this).height();
-        if (dh > 0) {
-          clearInterval(menuAction);
-          togglePos();
-          return;
-        }
-      });
-    }
-
-    function onStartTimer() {
-      togglePos();
-      clearInterval(menuAction);
-      menuAction = setInterval(checkHeight, 100);
-    }
-
-    if (window.matchMedia('(min-width:769px)').matches) {
-      d.on('click', onStartTimer);
-      w.on('resize', togglePos).trigger('resize');
-    }
-
-    m.on('click', function() {
-		  $(this).toggleClass('is-open');
-      n.toggleClass('is-open');
-      b.toggleClass('is-fixed');
-	  });
-  };
-
   MAIN.setSVGFallback = function()
   {
     if (!feature.svg) {
@@ -74,71 +23,6 @@
     }
   };
 
-  MAIN.setMaplace = function()
-  {
-    console.log('loaded');
-    new Maplace({
-      map_div: '#gmaps',
-      locations: [
-        {
-          title: 'Asyl inc.',
-          lat: 35.6937166,
-          lon: 139.7607625,
-          zoom: 18
-        }
-      ],
-      map_options: {
-        set_center: [35.6937166, 139.7607625],
-        zoom: 17,
-        scrollwheel: false
-      },
-      styles: {
-        'Bluish': [{'stylers':[{'hue':'#007fff'},{'saturation':89}]},{'featureType':'water','stylers':[{'color':'#ffffff'}]},{'featureType':'administrative.country','elementType':'labels','stylers':[{'visibility':'off'}]}]
-      }
-    }).Load();
-  };
-
-  MAIN.setPageTop = function()
-  {
-    var p = $('.pagetop'),
-        c = $('.copyright'),
-        w = $(window);
-
-    w.on('resize', function(){
-      if (window.matchMedia('(min-width: 768px)').matches) {
-        w.on('scroll', function(){
-          t = w.scrollTop();
-          if (t === 0) {
-            p.hide();
-            c.show();
-          } else if (t >= 1) {
-            p.show();
-            c.hide();
-          }
-        }).trigger('scroll');
-      } else if (window.matchMedia('(max-width: 768px)').matches) {
-        p.hide();
-      }
-    }).trigger('resize');
-  };
-
-  MAIN.setSmoothScroll = function()
-  {
-    $('a[href*="#"]:not([href="#"]):not([data-toggle="collapse"])').click(function () {
-      var href = $(this).attr('href'),
-          target = $(href === '#' || href === '' ? 'html' : href),
-          offset = -60,
-          duration = 500,
-          easing = 'easeInOutQuart';
-      if (target.id === 'pagetop') {
-        target.velocity('scroll', { duration: duration, easing: easing });
-      } else {
-        target.velocity('scroll', { duration: duration, easing: easing,  offset: offset });
-      }
-      return false;
-    });
-  };
-
   MAIN.setIas = function()
   {
     var ias = $.ias({
@@ -146,11 +30,15 @@
       item:           '.works-item',
       pagination:     '.pagination',
       next:           '.nav-links .next',
-      negativeMargin: 200
+      negativeMargin: 600
     });
 
     ias.extension(new IASSpinnerExtension({
-      src: '/assets/images/loading.svg', // optionally
+      src: '/assets/images/loading.svg'
+    }));
+
+    ias.extension(new IASTriggerExtension({
+    text: 'More'
     }));
   };
 
@@ -160,9 +48,8 @@
     'common': {
       init: function() {
         MAIN.setSVGFallback();
-        MAIN.setPageTop();
-        MAIN.setSmoothScroll();
-        MAIN.setMenu();
+        //MAIN.setPageTop();
+        //MAIN.setSmoothScroll();
       },
       finalize: function() {
       }
@@ -185,7 +72,7 @@
     },
     'contact': {
       init: function() {
-        MAIN.setMaplace();
+        //MAIN.setMaplace();
       }
     }
   };

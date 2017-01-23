@@ -14,8 +14,12 @@ body {
 .main {
   position: relative;
   z-index: 1;
-  padding-top: 7rem;
+  padding-top: 10rem;
   @media (min-width: $screen-sm) {
     padding-top: 14rem;
   }
+}
+
+.wrap {
+  @include clearfix;
 }

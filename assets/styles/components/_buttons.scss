@@ -1,0 +1,9 @@
+%button-base {
+  display: inline-block;
+  padding: 1rem 2rem;
+}
+
+%button-ghost {
+  @extend %button-base;
+  border: 1px solid $brand-primary;
+}
