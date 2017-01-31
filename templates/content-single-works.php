@@ -138,4 +138,9 @@
   </article>
 <?php endwhile; ?>
 
-<?php get_template_part('templates/post-items-works'); ?>
+<div class="works-body">
+  <div class='section-header'>
+    <h3>Latest</h3>
+  </div>
+  <?php get_template_part('templates/post-items-works'); ?>
+</div>

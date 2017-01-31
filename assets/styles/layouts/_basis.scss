@@ -24,6 +24,12 @@ body {
   }
 }
 
+body.home {
+  .main {
+    padding-top: 0;
+  }
+}
+
 .wrap {
   @include clearfix;
 }

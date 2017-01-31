@@ -52,7 +52,7 @@
 }
 
 .nav-primary {
-  position: absolute;
+  position: fixed;
   top: 2.5rem;
   right: $grid-gutter-width;
   z-index: 99;

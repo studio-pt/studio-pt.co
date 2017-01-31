@@ -1,7 +1,3 @@
-<div class="works-body">
-  <div class='section-header'>
-    <h3>Latest</h3>
-  </div>
 <?php
   $the_query = new WP_Query(array(
     'paged'       => get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1,
@@ -18,4 +14,3 @@
   ));
   wp_reset_postdata();
   ?>
-</div>

@@ -16,12 +16,26 @@
 	  transform: translate(-50%, -50%);
     z-index: 1;
   }
-  .cover-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    padding: 0 $grid-gutter-width;
-  }
+}
+
+.cover-trigger {
+  cursor: pointer;
+}
+
+.cover-label {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 0 $grid-gutter-width;
+}
+
+.cover-down {
+  position: fixed;
+  bottom: 4rem;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 2;
+  width: 35px;
 }

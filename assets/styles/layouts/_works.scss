@@ -12,6 +12,19 @@
   }
 }
 
+body.home {
+  .works-body {
+    margin-top: 2rem;
+    @media (min-width: $screen-md) {
+      margin-top: 4rem;
+    }
+    .works-item {
+      @include make-sm-column(6, 0);
+      @include make-lg-column(6, 0);
+    }
+  }
+}
+
 .single-works {
   .entry-title {
     @extend %container-xs;

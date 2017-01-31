@@ -1,6 +1,6 @@
 // Header
 header.banner {
-  position: fixed;
+  position: absolute;
   height: 8rem;
   width: 100%;
   z-index: 2;
@@ -14,4 +14,15 @@ header.banner {
 
 .brand {
   @extend %hover-to-fade;
+}
+
+body.home {
+  header.banner {
+    display: none;
+  }
+  .wrap, footer.content-info {
+    position: relative;
+    background: #fff;
+    z-index: 3;
+  }
 }

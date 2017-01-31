@@ -8,7 +8,7 @@ use Roots\Sage\Wrapper;
 <!doctype html>
 <html <?php language_attributes(); ?>>
   <?php get_template_part('templates/head'); ?>
-  <body id="pagetop" <?php body_class(); ?>>
+  <body id="t" <?php body_class(); ?>>
     <!--[if IE]>
       <div class="alert alert-warning">
         <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage'); ?>
@@ -22,7 +22,7 @@ use Roots\Sage\Wrapper;
       get_template_part('templates/header');
       get_template_part('templates/navigation');
     ?>
-    <div class="wrap container-fluid" role="document">
+    <div id="b" class="wrap container-fluid" role="document">
       <div class="content row">
         <main class="main">
           <?php include Wrapper\template_path(); ?>

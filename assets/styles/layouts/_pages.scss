@@ -1,5 +1,5 @@
 .page-container {
-  @extend %container-sm;
+  @extend %container-md;
 }
 
 .page-body {
@@ -28,5 +28,54 @@
   padding-bottom: 100%; /* 1:1 */
   @media (min-width: $screen-sm) {
     padding-bottom: 75%; /* 4:3 */
+  }
+}
+
+body.page-template-template-about {
+  background: $brand-primary;
+  color: $text-color-inversed;
+  a { color: $text-color-inversed; }
+  svg path { fill: $text-color-inversed; }
+  #icon-menu span { background: $text-color-inversed; }
+  &.is-fixed {
+    a { color: $brand-primary; }
+    #icon-menu span { background: $brand-primary; }
+  }
+}
+
+.dl-person {
+  > dt {
+    font-weight: bold;
+    font-size: 1.6rem;
+    > small {
+      margin-left: 1rem;
+    }
+  }
+  > dd {
+    font-size: 1.2rem;
+  }
+}
+
+.dl-company {
+  @include clearfix;
+  > dt {
+    text-align: left;
+    margin-bottom: .5rem;
+  }
+  > dd {
+    margin-bottom: 1rem;
+  }
+  @media (min-width: $screen-md) {
+    > dt {
+      clear: left;
+      float: left;
+      width: 6rem;
+    }
+    > dd {
+      margin-left: 8rem;
+    }
+    > dt, dd {
+      margin-bottom: .7rem;
+    }
   }
 }
