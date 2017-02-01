@@ -39,11 +39,8 @@ body.page-template-template-about {
     text-decoration: underline;
     &:hover { text-decoration: none; }
   }
-  nav, .nav {
-    a {
-      text-decoration: none;
-      &:hover { text-decoration: underline; }
-    }
+  nav, .nav, .menu {
+    a { text-decoration: none; }
   }
   svg path { fill: $text-color-inversed; }
   #icon-menu span { background: $text-color-inversed; }
