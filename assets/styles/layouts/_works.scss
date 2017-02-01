@@ -32,6 +32,10 @@ body.home {
   }
   .entry-feature {
     @extend %container-xl;
+    @media (max-width: $screen-xs-max) {
+      margin-left: -20px;
+      margin-right: -20px;
+    }
     > .entry-item {
       > .item-image {
         > img {

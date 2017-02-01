@@ -34,7 +34,17 @@
 body.page-template-template-about {
   background: $brand-primary;
   color: $text-color-inversed;
-  a { color: $text-color-inversed; }
+  a {
+    color: $text-color-inversed;
+    text-decoration: underline;
+    &:hover { text-decoration: none; }
+  }
+  nav, .nav {
+    a {
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
   svg path { fill: $text-color-inversed; }
   #icon-menu span { background: $text-color-inversed; }
   &.is-fixed {
@@ -46,8 +56,8 @@ body.page-template-template-about {
 .dl-person {
   > dt {
     font-weight: bold;
-    font-size: 1.6rem;
     > small {
+      font-size: 1.2rem;
       margin-left: 1rem;
     }
   }
@@ -72,7 +82,7 @@ body.page-template-template-about {
       width: 6rem;
     }
     > dd {
-      margin-left: 8rem;
+      margin-left: 10rem;
     }
     > dt, dd {
       margin-bottom: .7rem;
