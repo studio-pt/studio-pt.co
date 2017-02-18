@@ -6,7 +6,6 @@
   ?>
   <img class='cover-label cover-trigger' data-href="#b" src="/assets/images/brand__hg.svg" alt="<?php bloginfo('name'); ?>">
   <img class='cover-down cover-trigger' data-href="#b" src="/assets/images/icon__chevron--down.svg" alt="">
-  <img class='cover-spinner' src="/assets/images/loading.svg" alt="">
   <div class="cover-poster">
     <video class="hidden-sm" poster="<?= $poster['url'] ?>" muted autoplay loop playsinline>
       <source src="<?= $video_pc['url'] ?>" type="<?= $video_pc['mime_type'] ?>">

@@ -16,11 +16,7 @@
 
   MAIN.setCoverVideo = function()
   {
-    $('.cover-poster > video').on('loadstart', function (e) {
-      $('.cover-spinner').show();
-    });
     $('.cover-poster > video').on('canplay', function (e) {
-      $('.cover-spinner').hide();
       $(this).attr('poster', '');
     });
   };
@@ -117,9 +113,9 @@
     },
     'home': {
       init: function() {
+        MAIN.setCoverVideo();
         MAIN.setCoverScroll();
         MAIN.setIas();
-        MAIN.setCoverVideo();
       },
       finalize: function() {
       }
