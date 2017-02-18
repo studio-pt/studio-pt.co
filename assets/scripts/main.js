@@ -16,7 +16,14 @@
 
   MAIN.setCoverVideo = function()
   {
-    $('.cover-poster > video').on('canplay', function (e) {
+    var wh = $(window).height();
+    var p = $('.cover-poster');
+
+    if (feature.touch && window.matchMedia('(max-width:768px)').matches) {
+      p.css('height', wh);
+    }
+
+    p.children(' > video').on('canplay', function (e) {
       $(this).attr('poster', '');
     });
   };
@@ -70,13 +77,12 @@
       $(window).on('scroll', function() {
         var t = $(this).scrollTop() / 10;
         $('.cover-down').css({'opacity': 1 - (t / 100)});
-        if (!feature.touch) {
-          $('.cover-label').css({
-            'perspective': t + 'px',
-            'transform': 'translate(-50%, -' + (50 + t) + '%) rotateX(' + t + 'deg) rotateY(' + t + 'deg) rotateZ(' + t + 'deg)',
+        //if (!feature.touch) {
+          $('.cover-label > img').css({
+            'transform': 'rotateX(' + t + 'deg) rotateY(' + t + 'deg) rotateZ(' + t + 'deg)',
             'opacity': 1 - (t / 100)
           });
-        }
+        //}
       });
   };
 
