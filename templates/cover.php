@@ -4,8 +4,8 @@
   $video_pc = get_field('video-pc', 'option');
   $poster = get_field('poster', 'option');
   ?>
-  <div class="cover-label cover-trigger">
-    <img data-href="#b" src="/assets/images/brand__hg.svg" alt="<?php bloginfo('name'); ?>">
+  <div class="cover-label">
+    <img class="cover-trigger" data-href="#b" src="/assets/images/brand__hg.svg" alt="<?php bloginfo('name'); ?>">
   </div>
   <img class='cover-down cover-trigger' data-href="#b" src="/assets/images/icon__chevron--down.svg" alt="">
   <div class="cover-poster">
