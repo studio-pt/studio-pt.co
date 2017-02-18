@@ -14,6 +14,17 @@
 
   var MAIN = {};
 
+  MAIN.setCoverVideo = function()
+  {
+    $('.cover-poster > video').on('loadstart', function (e) {
+      $('.cover-spinner').show();
+    });
+    $('.cover-poster > video').on('canplay', function (e) {
+      $('.cover-spinner').hide();
+      $(this).attr('poster', '');
+    });
+  };
+
   MAIN.setSVGFallback = function()
   {
     if (!feature.svg) {
@@ -108,6 +119,7 @@
       init: function() {
         MAIN.setCoverScroll();
         MAIN.setIas();
+        MAIN.setCoverVideo();
       },
       finalize: function() {
       }
@@ -124,7 +136,6 @@
     },
     'contact': {
       init: function() {
-        //MAIN.setMaplace();
       }
     }
   };
