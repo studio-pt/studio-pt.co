@@ -3,7 +3,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: 1;
   overflow: hidden;
   > video  {
     position: absolute;
@@ -23,7 +23,8 @@
 }
 
 .cover-label {
-  perspective: 1px;
+  backface-visibility: hidden;
+  perspective: 10px;
   width: 100%;
   position: fixed;
   top: 50%;
