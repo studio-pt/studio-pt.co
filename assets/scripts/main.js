@@ -17,15 +17,20 @@
   MAIN.setCoverVideo = function()
   {
     var wh = $(window).height();
-    var p = $('.cover-poster');
+    var ct = $('.cover-label, .cover-down');
+    var v = $('.cover-poster > video');
+    var ve = v[0];
+
+    v.on('canplaythrough', function(){
+      if (ve.readyState > 3) {
+        ct.show();
+        $(this).show();
+      }
+    });
 
     if (feature.touch && window.matchMedia('(max-width:768px)').matches) {
-      p.css('height', wh);
+      cp.css('height', wh);
     }
-
-    p.children(' > video').on('canplay', function (e) {
-      $(this).attr('poster', '');
-    });
   };
 
   MAIN.setSVGFallback = function()

@@ -6,6 +6,7 @@
   z-index: 1;
   overflow: hidden;
   > video  {
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -23,6 +24,7 @@
 }
 
 .cover-label {
+  display: none;
   backface-visibility: hidden;
   perspective: 10px;
   width: 100%;
@@ -39,6 +41,7 @@
 }
 
 .cover-down {
+  display: none;
   position: fixed;
   bottom: 4rem;
   left: 50%;
