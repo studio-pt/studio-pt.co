@@ -18,15 +18,41 @@
   {
     var wh = $(window).height();
     var ct = $('.cover-label, .cover-down');
+    var cp = $('.cover-poster');
     var v = $('.cover-poster > video');
-    var ve = v[0];
+    var vpc = $('#vpc'), vsp = $('#vsp');
 
-    v.on('canplaythrough', function(){
-      if (ve.readyState > 3) {
-        ct.show();
-        $(this).show();
+    if (window.matchMedia('(max-width:768px)').matches) {
+      try {
+        vsp[0].play();
+      } catch (e) {
+        console.log("vsp play error");
       }
-    });
+      vsp.on('canplay', function(){
+        if (vsp.is(':hidden')) {
+          vsp.css('display','inline-block');
+        }
+        if (ct.is(':hidden')) {
+          ct.show();
+        }
+      });
+      //console.log("vsp done");
+    } else if (window.matchMedia('(min-width:769px)').matches) {
+      vpc.on('canplay', function(){
+        if (vpc.is(':hidden')) {
+          vpc.css('display','block');
+        }
+        if (ct.is(':hidden')) {
+          ct.show();
+        }
+      });
+      try {
+        vpc[0].play();
+      } catch (e) {
+        console.log("vpc play error");
+      }
+      //console.log("vpc done");
+    }
 
     if (feature.touch && window.matchMedia('(max-width:768px)').matches) {
       cp.css('height', wh);
