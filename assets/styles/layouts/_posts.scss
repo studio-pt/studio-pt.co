@@ -16,14 +16,6 @@
   .entry-meta {
     margin-bottom: 0;
   }
-  .entry-content {
-    a {
-      border-bottom: 1px dotted $brand-primary;
-      &:hover {
-        border-bottom: none;
-      }
-    }
-  }
 }
 
 .archive .hentry {

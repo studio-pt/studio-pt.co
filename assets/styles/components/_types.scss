@@ -15,13 +15,22 @@
 }
 
 .section-header {
-  margin: 2.5rem 0;
   text-align: center;
+  margin: 2rem 0;
   > h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    font-size: $font-size-h4;
-    @media (min-width: $screen-md) {
-      font-size: $font-size-h3;
+    margin: 0;
+    font-size: $font-size-h3;
+  }
+  @media (min-width: $screen-md) {
+    margin: 3rem 0;
+  }
+}
+
+.entry-content, .page-body {
+  a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
     }
   }
 }

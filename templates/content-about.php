@@ -4,7 +4,9 @@
     <?php while (have_rows('about')): the_row(); ?>
       <div class="row">
         <div class="col-xs-12">
-          <h3 class="section-header"><?= the_sub_field('title'); ?></h3>
+          <div class="section-header">
+            <h3><?= the_sub_field('title'); ?></h3>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -24,7 +26,9 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <h3 class="section-header"><?= the_sub_field('title'); ?></h3>
+            <div class="section-header">
+              <h3><?= the_sub_field('title'); ?></h3>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -61,7 +65,9 @@
       <?php while (have_rows('people')): the_row(); ?>
         <div class="row">
           <div class="col-xs-12">
-            <h3 class="section-header"><?= the_sub_field('title'); ?></h3>
+            <div class="section-header">
+              <h3><?= the_sub_field('title'); ?></h3>
+            </div>
           </div>
         </div>
         <div class="row">
