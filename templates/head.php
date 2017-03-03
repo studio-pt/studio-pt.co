@@ -3,7 +3,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/assets/images/favicon.png" sizes="48x48" type="image/png">
-  <meta property="fb:app_id" content="">
+  <meta property="fb:app_id" content="1274106989301941">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>">
   <meta property="og:locale" content="ja_JP">
