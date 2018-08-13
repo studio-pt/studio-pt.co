@@ -7,6 +7,7 @@
 - var domain = 'example.com';
 - var canonical = protocol + domain + dist;
 - var fb_app_id = '';
+- var body_class = '';
 
 block head
   - var lang = '';
@@ -46,17 +47,13 @@ html(lang=lang)
     //- link(rel='icon', href=images + '/favicon-64.png', sizes='64x64', type='image/png')
     link(rel='canonical', href=canonical)
     link(rel='stylesheet', href=styles + '/main.min.css')
-  body
+  body(class=body_class)
     block alert
 
     block main
       p Hello world!
 
-    script(src=scripts + '/libs/feature.min.js')
-    script(src='//code.jquery.com/jquery-3.3.1.min.js')
-    script window.jQuery || document.write('<script src="/assets/scripts/libs/jquery.min.js"><\/script>')
-    //-script(src=scripts + '/plugins.min.js')
-    script(src=scripts + '/main.min.js')
+    //- script(src=scripts + '/main.min.js')
 
     //- Google Analytics: change UA-XXXXX-X to be your site's ID.
     //-
