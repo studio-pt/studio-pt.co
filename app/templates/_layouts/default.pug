@@ -3,10 +3,9 @@
 - var images = assets + '/images';
 - var styles = assets + '/styles';
 - var scripts = assets + '/scripts';
-- var protocol = 'http://';
-- var domain = 'example.com';
+- var protocol = 'https://';
+- var domain = 'studio-pt.co';
 - var canonical = protocol + domain + dist;
-- var fb_app_id = '';
 - var body_class = '';
 
 block head
@@ -34,17 +33,7 @@ html(lang=lang)
     meta(property='og:description', content=description)
     meta(property='og:site_name', content=title)
     meta(property='og:locale', content=locale)
-    //- Facebook: https://developers.facebook.com/docs/sharing/webmasters#markup
-    //- Open Graph: http://ogp.me/
-
     meta(name='twitter:card', content='summary_large_image')
-    //- More info: https://dev.twitter.com/cards/getting-started
-    //- Validate: https://dev.twitter.com/docs/cards/validation/validator
-
-    //- link(rel='icon', href=images + '/favicon-16.png', sizes='16x16', type='image/png')
-    //- link(rel='icon', href=images + '/favicon-32.png', sizes='32x32', type='image/png')
-    //- link(rel='icon', href=images + '/favicon-48.png', sizes='48x48', type='image/png')
-    //- link(rel='icon', href=images + '/favicon-64.png', sizes='64x64', type='image/png')
     link(rel='canonical', href=canonical)
     link(rel='stylesheet', href=styles + '/main.min.css')
   body(class=body_class)
