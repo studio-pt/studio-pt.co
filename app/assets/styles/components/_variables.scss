@@ -14,11 +14,10 @@ $link-color:              $brand-primary !default;
 $link-hover-color:        darken($link-color, 15%) !default;
 
 // Typography
-@import url('https://fonts.googleapis.com/css?family=EB+Garamond');
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 
 $font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif !default;
-$font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
+$font-family-serif:       'Libre Baskerville', Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-serif !default;
 $font-weight-base:        normal !default;
@@ -26,13 +25,13 @@ $font-weight-base:        normal !default;
 // Font Size
 $fs-breakpoint: 640px !default;
 
-$font-size-huge:          4.8rem !default;
-$font-size-xl:            3.6rem !default;
-$font-size-lg:            2.8rem !default;
-$font-size-base:          2rem !default;
-$font-size-sm:            1.6rem !default;
-$font-size-xs:            1.4rem !default;
-$font-size-tiny:          1.2rem !default;
+$font-size-huge:          6.4rem !default;
+$font-size-xl:            4.2rem !default;
+$font-size-lg:            3.6rem !default;
+$font-size-base:          2.4rem !default;
+$font-size-sm:            1.8rem !default;
+$font-size-xs:            1.6rem !default;
+$font-size-tiny:          1.4rem !default;
 
 $fs-tiny: (null: $font-size-tiny,  $fs-breakpoint: $font-size-tiny) !default;
 $fs-xs:   (null: $font-size-tiny,  $fs-breakpoint: $font-size-xs) !default;
