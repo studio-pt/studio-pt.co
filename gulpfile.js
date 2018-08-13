@@ -142,7 +142,7 @@ gulp.task('reload', function () {
 // default task
 gulp.task('default', ['clean'], function() {
   //gulp.start('templates', 'styles', 'scripts', 'plugins', 'libs', 'images', 'fonts');
-  gulp.start('templates', 'styles');
+  gulp.start('templates', 'styles', 'images');
 });
 
 // watch
@@ -155,7 +155,7 @@ gulp.task('watch', ['browsersync'], function() {
   // assets
   gulp.watch('app/assets/styles/**/*.scss', ['styles']);
   // gulp.watch('app/assets/scripts/**/*.js', ['scripts']);
-  // gulp.watch('app/assets/images/**/*', ['images']);
+  gulp.watch('app/assets/images/**/*', ['images']);
 
   // watch any files in assets/, must be reload on change
   gulp.watch([

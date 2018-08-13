@@ -12,6 +12,7 @@ h4, .h4, h5, .h5, h6, .h6 {
   > small {
     @include font-size($fs-base);
     display: block;
+    font-weight: 700;
   }
 }
 
