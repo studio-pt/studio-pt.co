@@ -1,4 +1,6 @@
-# gulp-pug-webapp
+# STUDIO PT.
+
+Graphic Design, Art Direction
 
 ## Build
 
