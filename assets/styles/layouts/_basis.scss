@@ -5,13 +5,17 @@ html {
 }
 
 body {
-  font-family: $font-family-sans-serif;
+  font-size: 2rem;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: 'palt' 1;
   line-height: 1.6;
   @media (max-width: $screen-xs-max) {
     &.is-fixed { position: fixed; overflow: hidden; }
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 2rem;
 }
 
 .main {

@@ -53,6 +53,5 @@
       echo '<meta property="og:image" content="'; echo home_url(); echo '/assets/images/og.png">'; echo "\n";
     }
   ?>
-
   <?php wp_head(); ?>
 </head>

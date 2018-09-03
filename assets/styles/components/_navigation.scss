@@ -82,9 +82,11 @@
   > .nav {
     font-size: 2rem;
     > li {
-      font-weight: bold;
       display: inline-block;
-      margin-left: 1rem;
+      margin-left: 2rem;
+      &.active {
+        font-weight: bold;
+      }
     }
   }
 }
@@ -147,3 +149,79 @@
     margin-right: 10px;
   }
 }
+
+
+%ddmenu-base {
+  background: none;
+  overflow: hidden;
+  display: block;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  border: none;
+}
+
+%ddmenu-is-collapsed {
+  height: 0;
+}
+
+%ddmenu-is-expanded {
+  height: auto;
+}
+
+// The dropdown menu (ul)
+.dropdown-menu {
+  @extend %ddmenu-base;
+  @extend %ddmenu-is-collapsed;
+  > li > a {
+    padding: 0;
+    margin: 0 0 1rem;
+    &:hover {
+      background: none;
+    }
+  }
+}
+
+.dropdown-menu > .active > a {
+  &,
+  &:hover,
+  &:focus {
+    font-weight: bold;
+  }
+}
+
+.caret {
+  display: none;
+}
+
+// State for the dropdown
+.dropdown {
+  &.open {
+    > .dropdown-menu {
+      @extend %ddmenu-is-expanded;
+    }
+  }
+}
+
+// a[data-toggle='collapse'] {
+//   position: relative;
+//   padding-left: 1em;
+//   margin-right: 1em;
+//   &:before {
+//     position: absolute;
+//     width: 1em;
+//     height: $line-height-computed;
+//     left: 0;
+//     content: '+';
+//   }
+//   &[aria-expanded='true'] {
+//     &:before {
+//       content: '\2013';
+//     }
+//   }
+// }
+//
+// .collapsing {
+//   transition-duration: .1s;
+//   transition-timing-function: ease-in-out;
+// }

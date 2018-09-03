@@ -1,24 +1,18 @@
 // Header
 header.banner {
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-  > .brand {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
 }
 
 .brand {
-  @extend %hover-to-fade;
+  font-size: 2rem;
+  font-family: 'Untitled Black';
 }
 
 body.home {
-  header.banner {
-    display: none;
-  }
   .wrap, footer.content-info {
     position: relative;
     background: #fff;

@@ -16,9 +16,6 @@ use Roots\Sage\Wrapper;
     <![endif]-->
     <?php
       do_action('get_header');
-      if (is_front_page()) :
-        get_template_part('templates/cover');
-      endif;
       get_template_part('templates/header');
       get_template_part('templates/navigation');
     ?>

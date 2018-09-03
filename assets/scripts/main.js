@@ -14,63 +14,10 @@
 
   var MAIN = {};
 
-  MAIN.setCoverVideo = function()
-  {
-    var wh = $(window).height();
-    var ct = $('.cover-label, .cover-down');
-    var cp = $('.cover-poster');
-    var v = $('.cover-poster > video');
-    var vpc = $('#vpc'), vsp = $('#vsp');
-
-    if (window.matchMedia('(max-width:768px)').matches) {
-      try {
-        vsp[0].play();
-      } catch (e) {
-        console.log("vsp play error");
-      }
-      vsp.on('canplay', function(){
-        if (vsp.is(':hidden')) {
-          vsp.css('display','inline-block');
-        }
-        if (ct.is(':hidden')) {
-          ct.show();
-        }
-      });
-      //console.log("vsp done");
-    } else if (window.matchMedia('(min-width:769px)').matches) {
-      vpc.on('canplay', function(){
-        if (vpc.is(':hidden')) {
-          vpc.css('display','block');
-        }
-        if (ct.is(':hidden')) {
-          ct.show();
-        }
-      });
-      try {
-        vpc[0].play();
-      } catch (e) {
-        console.log("vpc play error");
-      }
-      //console.log("vpc done");
-    }
-
-    if (feature.touch && window.matchMedia('(max-width:768px)').matches) {
-      cp.css('height', wh);
-    }
-  };
-
-  MAIN.setSVGFallback = function()
-  {
-    if (!feature.svg) {
-      $('img').each(function() {
-        $(this).attr('src', $(this).attr('src').replace(/\.svg/gi,'.png'));
-      });
-    }
-  };
-
   MAIN.setMenu = function()
   {
     var m = $('#icon-menu'),
+        d = $('.dropdown-toggle'),
         n = $('.nav-primary'),
         w = $(window),
         b = $('body');
@@ -79,7 +26,13 @@
 		  $(this).toggleClass('is-open');
       n.toggleClass('is-open');
       b.toggleClass('is-fixed');
+      return false;
 	  });
+
+    d.on('click', function(){
+      $(this).parent('.dropdown').toggleClass('open');
+      return false;
+    });
   };
 
   MAIN.setPageScroll = function()
@@ -92,29 +45,6 @@
       target.velocity('scroll', { duration: duration, easing: easing });
       return false;
     });
-  };
-
-  MAIN.setCoverScroll = function()
-  {
-    $('.cover-trigger').click(function () {
-      var href = $(this).attr('data-href'),
-          target = $(href === '#' || href === '' ? 'html' : href),
-          duration = 500,
-          easing = 'easeInOutQuart';
-      target.velocity('scroll', { duration: duration, easing: easing });
-      return false;
-    });
-
-      $(window).on('scroll', function() {
-        var t = $(this).scrollTop() / 10;
-        $('.cover-down').css({'opacity': 1 - (t / 100)});
-        //if (!feature.touch) {
-          $('.cover-label > img').css({
-            'transform': 'rotateX(' + t + 'deg) rotateY(' + t + 'deg) rotateZ(' + t + 'deg)',
-            'opacity': 1 - (t / 100)
-          });
-        //}
-      });
   };
 
   MAIN.setIas = function()
@@ -138,10 +68,9 @@
 
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
-  var HOEDOWN = {
+  var PT = {
     'common': {
       init: function() {
-        MAIN.setSVGFallback();
         MAIN.setMenu();
         // MAIN.setPageScroll();
       },
@@ -150,8 +79,6 @@
     },
     'home': {
       init: function() {
-        MAIN.setCoverVideo();
-        MAIN.setCoverScroll();
         MAIN.setIas();
       },
       finalize: function() {
@@ -178,7 +105,7 @@
   var UTIL = {
     fire: function(func, funcname, args) {
       var fire;
-      var namespace = HOEDOWN;
+      var namespace = PT;
       funcname = (funcname === undefined) ? 'init' : funcname;
       fire = func !== '';
       fire = fire && namespace[func];

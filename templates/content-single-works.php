@@ -3,7 +3,7 @@
     <header>
       <h1 class="entry-title"><?php the_title(); ?></h1>
       <?php
-        $terms = get_the_terms($post->ID, 't');
+        $terms = get_the_terms($post->ID, 'c');
         echo '<ul class="entry-types">';
         foreach ($terms as $term) :
           echo '<li><a href="' . get_term_link($term) . '">'.$term->name.'</a></li>';

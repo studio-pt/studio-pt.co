@@ -15,7 +15,7 @@
       <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     </h2>
     <?php
-      $terms = get_the_terms($post->ID, 't');
+      $terms = get_the_terms($post->ID, 'c');
       echo '<ul class="entry-types">';
       foreach ($terms as $term) :
         echo '<li><a href="' . get_term_link($term) . '">'.$term->name.'</a></li>';
