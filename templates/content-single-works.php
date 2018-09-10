@@ -1,7 +1,10 @@
 <?php while (have_posts()) : the_post(); ?>
   <article <?php post_class('entry-body'); ?>>
-    <header>
+    <header class="entry-header">
       <h1 class="entry-title"><?php the_title(); ?></h1>
+      <div class="entry-description">
+        <?= the_content(); ?>
+      </div>
       <?php
         $terms = get_the_terms($post->ID, 'c');
         echo '<ul class="entry-types">';

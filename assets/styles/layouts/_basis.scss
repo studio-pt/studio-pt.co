@@ -5,12 +5,15 @@ html {
 }
 
 body {
-  font-size: 2rem;
+  font-size: 1.8rem;
   -webkit-font-smoothing: antialiased;
   font-feature-settings: 'palt' 1;
-  line-height: 1.6;
+  line-height: 1.8;
   @media (max-width: $screen-xs-max) {
-    &.is-fixed { position: fixed; overflow: hidden; }
+    &.is-fixed {
+      position: fixed;
+      overflow: hidden;
+    }
   }
 }
 
@@ -22,18 +25,10 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   position: relative;
   z-index: 1;
-  padding-top: 8rem;
-  @media (min-width: $screen-sm) {
-    padding-top: 10rem;
-  }
-}
-
-body.home {
-  .main {
-    padding-top: 0;
-  }
+  padding-top: 10rem;
 }
 
 .wrap {
   @include clearfix;
+  @extend %container-xl;
 }

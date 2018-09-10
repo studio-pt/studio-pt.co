@@ -4,18 +4,11 @@ header.banner {
   top: 30px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 99;
+  z-index: 100;
+  line-height: 1;
 }
 
 .brand {
   font-size: 2rem;
   font-family: 'Untitled Black';
-}
-
-body.home {
-  .wrap, footer.content-info {
-    position: relative;
-    background: #fff;
-    z-index: 3;
-  }
 }

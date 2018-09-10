@@ -6,81 +6,11 @@
   text-align: left;
   > p, > dl, > ul, > ol {
     line-height: 1.8;
-    margin-bottom: $line-height-computed / 2;
-    @media (min-width: $screen-sm) {
-      margin-bottom: $line-height-computed;
-    }
-  }
-}
-
-#gmaps {
-  margin-bottom: $line-height-computed / 2;
-  @media (min-width: $screen-sm) {
-    margin-bottom: $line-height-computed;
-  }
-}
-
-.canvas_map {
-  position: relative;
-	height: 0;
-  overflow: hidden;
-  cursor: pointer;
-  padding-bottom: 100%; /* 1:1 */
-  @media (min-width: $screen-sm) {
-    padding-bottom: 75%; /* 4:3 */
-  }
-}
-
-body.page-template-template-about {
-  background: $brand-primary;
-  color: $text-color-inversed;
-  a {
-    color: $text-color-inversed;
-  }
-  nav, .nav, .menu {
-    a { text-decoration: none; }
-  }
-  svg path { fill: $text-color-inversed; }
-  #icon-menu span { background: $text-color-inversed; }
-  &.is-fixed {
-    a { color: $brand-primary; }
-    #icon-menu span { background: $brand-primary; }
-  }
-}
-
-.dl-person {
-  > dt {
-    font-weight: bold;
-    > small {
-      font-size: 1.2rem;
-      margin-left: 1rem;
-    }
-  }
-  > dd {
-    font-size: 1.2rem;
-  }
-}
-
-.dl-company {
-  @include clearfix;
-  > dt {
-    text-align: left;
-    margin-bottom: .5rem;
-  }
-  > dd {
-    margin-bottom: 1rem;
-  }
-  @media (min-width: $screen-md) {
-    > dt {
-      clear: left;
-      float: left;
-      width: 6rem;
-    }
-    > dd {
-      margin-left: 10rem;
-    }
-    > dt, dd {
-      margin-bottom: .7rem;
+    margin-bottom: 1.5em;
+    span {
+      @media (max-width: $screen-xs-max) {
+        font-size: 100% !important;
+      }
     }
   }
 }

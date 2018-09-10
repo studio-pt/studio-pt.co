@@ -28,14 +28,12 @@
 
 .ias-trigger, .ias-spinner {
   clear: both;
-  margin-bottom: 2rem;
-  height: 40px;
+  padding-top: 2rem;
   text-align: center;
 }
 
 .ias-trigger {
   > a {
-    @extend %button-ghost;
     height: 40px;
     padding: 0 8rem;
     line-height: 40px;
@@ -53,17 +51,19 @@
 
 .nav-primary {
   position: fixed;
-  top: 2.5rem;
+  top: 2.2rem;
   right: $grid-gutter-width;
   z-index: 99;
+  text-align: left;
   @media (max-width: $screen-sm) {
+    text-align: center;
     display: none;
     &.is-open {
       display: block;
       position: fixed;
       top: 0;
       right: 0;
-      background: #E5EAFF;
+      background: #fff;
       width: 100%;
       height: 100%;
       > .nav {
@@ -74,12 +74,15 @@
         > li {
           display: block;
           margin: 0;
-          padding: .5rem 0;
+          padding: 1rem 0;
         }
       }
     }
   }
   > .nav {
+    @media (max-width: $screen-sm) {
+      font-size: 2.4rem;
+    }
     font-size: 2rem;
     > li {
       display: inline-block;
@@ -96,7 +99,7 @@
   top: 30px;
   right: $grid-gutter-width / 2;
   z-index: 999;
-  width: 30px;
+  width: 24px;
   height: 20px;
   transform: rotate(0deg);
   transition: .5s ease-in-out;
@@ -108,7 +111,7 @@
   span {
     display: block;
     position: absolute;
-    height: 2px;
+    height: 1px;
     width: 100%;
     background: $brand-primary;
     opacity: 1;
@@ -163,10 +166,17 @@
 
 %ddmenu-is-collapsed {
   height: 0;
+  font-size: 0;
 }
 
 %ddmenu-is-expanded {
   height: auto;
+  font-size: 1.8rem;
+  @media (max-width: $screen-xs-max) {
+    position: relative;
+    text-align: center;
+    font-size: 2rem;
+  }
 }
 
 // The dropdown menu (ul)
@@ -176,7 +186,7 @@
   > li > a {
     padding: 0;
     margin: 0 0 1rem;
-    &:hover {
+    &:hover, &:focus {
       background: none;
     }
   }
@@ -202,26 +212,3 @@
     }
   }
 }
-
-// a[data-toggle='collapse'] {
-//   position: relative;
-//   padding-left: 1em;
-//   margin-right: 1em;
-//   &:before {
-//     position: absolute;
-//     width: 1em;
-//     height: $line-height-computed;
-//     left: 0;
-//     content: '+';
-//   }
-//   &[aria-expanded='true'] {
-//     &:before {
-//       content: '\2013';
-//     }
-//   }
-// }
-//
-// .collapsing {
-//   transition-duration: .1s;
-//   transition-timing-function: ease-in-out;
-// }
