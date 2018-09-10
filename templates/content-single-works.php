@@ -7,7 +7,15 @@
       </div>
       <?php
         $terms = get_the_terms($post->ID, 'c');
-        echo '<ul class="entry-types">';
+        echo '<ul class="entry-categories">';
+        foreach ($terms as $term) :
+          echo '<li><a href="' . get_term_link($term) . '">'.$term->name.'</a></li>';
+        endforeach;
+        echo '</ul>';
+      ?>
+      <?php
+        $terms = get_the_terms($post->ID, 't');
+        echo '<ul class="entry-taxonomies">';
         foreach ($terms as $term) :
           echo '<li><a href="' . get_term_link($term) . '">'.$term->name.'</a></li>';
         endforeach;
@@ -77,6 +85,14 @@
               echo '<div class="item-image">';
             	echo '<img src="' . $image['sizes']['large'] . '" alt="">';
               echo '</div>';
+              echo '</div>';
+            elseif( get_row_layout() == 'images' ):
+              echo '<div class="entry-item">';
+              while( have_rows('images') ): the_row();
+                $image = get_sub_field('image');
+                echo '<div class="item-images" style="background-image:url(' . $image['sizes']['large'] . ');">';
+                echo '</div>';
+              endwhile;
               echo '</div>';
             elseif( get_row_layout() == 'youtube' ):
               $iframe = get_sub_field('youtube');

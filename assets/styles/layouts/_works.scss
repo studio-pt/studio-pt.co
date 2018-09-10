@@ -25,10 +25,11 @@ body.home {
     text-align: left;
   }
   .entry-title {
-    font-size: 2rem;
-    @media (min-width: $screen-sm) {
-      font-size: 2.4rem;
+    @media (max-width: $screen-xs-max) {
+      font-size: 2.2rem;
     }
+    font-size: 2.4rem;
+    line-height: 1.4;
   }
   .entry-feature {
     @media (max-width: $screen-xs-max) {
@@ -56,18 +57,58 @@ body.home {
   }
 }
 
-.entry-types {
+.entry-categories {
+  display: inline-block;
   font-size: $font-size-small;
   @extend %list-unstyled;
   @extend %list-inline;
   &:before {
-    content: 'Categories:';
-    margin-right: 1em;
+    content: 'Category:';
+    margin-right: .5em;
   }
   > li {
-    margin-right: 1em;
+    margin-right: .5em;
     &:last-child {
       margin-right: 0;
+    }
+    a {
+      border-bottom: 1px solid $text-color;
+      &:hover {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}
+
+.entry-categories + .entry-taxonomies {
+  margin-left: 1em;
+}
+
+.entry-taxonomies {
+  display: inline-block;
+  font-size: $font-size-small;
+  @extend %list-unstyled;
+  @extend %list-inline;
+  &:before {
+    content: 'Tag:';
+    margin-right: .5em;
+  }
+  > li {
+    margin-right: .5em;
+    &:after {
+      content: ',';
+    }
+    &:last-child {
+      margin-right: 0;
+      &:after {
+        content: '';
+      }
+    }
+    a {
+      border-bottom: 1px solid $text-color;
+      &:hover {
+        border-bottom-color: transparent;
+      }
     }
   }
 }
@@ -80,6 +121,7 @@ body.home {
 
 .entry-item {
   @include word-wrap;
+  @include clearfix;
   margin-bottom: $line-height-computed;
   > .item-editor {
     text-align: left;
@@ -88,6 +130,22 @@ body.home {
     text-align: center;
     > img {
       @extend %img-responsive;
+    }
+  }
+  > .item-images {
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 66.6%; /* 3:2 */
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    @media (min-width: $screen-xs) {
+      width: calc(50% - 1rem);
+      float: left;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      &:first-child { margin-left: 0; }
+      &:last-child { margin-right: 0; }
     }
   }
   > .item-oembed, > .item-video {
@@ -118,7 +176,7 @@ body.home {
     	height: 0;
       overflow: hidden;
       cursor: pointer;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 66.6%; /* 3:2 */
       @media (max-width: $screen-xs-max) {
         padding-bottom: 150%; /* 2:3 */
         .home & {
