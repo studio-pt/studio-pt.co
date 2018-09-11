@@ -35,18 +35,6 @@
     });
   };
 
-  MAIN.setPageScroll = function()
-  {
-    $('a[href*="#"]:not([href="#"])').click(function () {
-      var href = $(this).attr('href'),
-          target = $(href === '#' || href === '' ? 'html' : href),
-          duration = 500,
-          easing = 'easeInOutQuart';
-      target.velocity('scroll', { duration: duration, easing: easing });
-      return false;
-    });
-  };
-
   MAIN.setIas = function()
   {
     var ias = $.ias({
@@ -62,17 +50,35 @@
     }));
 
     ias.extension(new IASTriggerExtension({
-    text: 'More'
+      text: 'More'
+    }));
+  };
+
+  MAIN.setIasArticle = function()
+  {
+    var ias = $.ias({
+      container:      '.entry-container',
+      item:           '.entry-body',
+      pagination:     '.pagination',
+      next:           '.next-works',
+      negativeMargin: 600
+    });
+
+    ias.extension(new IASSpinnerExtension({
+      src: '/assets/images/loading.svg'
+    }));
+
+    ias.extension(new IASTriggerExtension({
+      text: 'Next'
     }));
   };
 
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
-  var PT = {
+  var STUDIOPT = {
     'common': {
       init: function() {
         MAIN.setMenu();
-        // MAIN.setPageScroll();
       },
       finalize: function() {
       }
@@ -91,7 +97,7 @@
     },
     'single_works': {
       finalize: function() {
-        MAIN.setIas();
+        MAIN.setIasArticle();
       }
     },
     'contact': {
@@ -105,7 +111,7 @@
   var UTIL = {
     fire: function(func, funcname, args) {
       var fire;
-      var namespace = PT;
+      var namespace = STUDIOPT;
       funcname = (funcname === undefined) ? 'init' : funcname;
       fire = func !== '';
       fire = fire && namespace[func];

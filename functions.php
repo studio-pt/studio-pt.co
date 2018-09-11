@@ -56,3 +56,12 @@ function set_mime_types($mimes) {
   $title = single_cat_title( '', false );
   return $title;
 });
+
+/**
+ * add specific class to previous_post_link
+ */
+
+add_filter( 'previous_post_link', 'add_prev_post_link_class' );
+function add_prev_post_link_class($output) {
+  return str_replace('<a href=', '<a class="next-works" href=', $output);
+}
