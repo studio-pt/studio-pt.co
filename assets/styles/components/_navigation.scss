@@ -212,3 +212,9 @@
     }
   }
 }
+
+#menu-primary {
+  @media (max-width: $screen-xs-max) {
+    min-width: $screen-xs-max;
+  }
+}

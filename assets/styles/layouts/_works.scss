@@ -26,10 +26,17 @@ body.home {
   }
   .entry-title {
     @media (max-width: $screen-xs-max) {
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
     font-size: 2.4rem;
     line-height: 1.4;
+  }
+  .entry-description {
+    @media (max-width: $screen-xs-max) {
+      font-size: 1.4rem;
+    }
+    font-size: 1.6rem;
+    line-height: 1.6;
   }
   .entry-feature {
     @media (max-width: $screen-xs-max) {
