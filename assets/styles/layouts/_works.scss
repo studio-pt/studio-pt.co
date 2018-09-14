@@ -3,6 +3,8 @@
   @media (min-width: $screen-sm) { margin-top: $line-height-computed * 4; }
 }
 
+
+
 .works-body {
   @include clearfix;
   @include make-row(20px);
@@ -241,4 +243,9 @@ body.home {
 
 .next-works {
   display: none;
+}
+
+
+.entry-body {
+  margin-bottom: 6rem;
 }
