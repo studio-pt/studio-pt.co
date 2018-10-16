@@ -164,13 +164,18 @@ body.home {
     margin-bottom: $line-height-computed;
     &:last-child { margin-bottom: 0; }
     @media (min-width: $screen-xs) {
-      width: calc(50% - 2rem);
+      width: calc(50% - 1rem);
       float: left;
       margin-bottom: 0;
-      margin-left: 2rem;
-      margin-right: 2rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
       &:first-child { margin-left: 0; }
       &:last-child { margin-right: 0; }
+    }
+    @media (min-width: $screen-sm) {
+      width: calc(50% - 2rem);
+      margin-left: 2rem;
+      margin-right: 2rem;
     }
   }
   > .item-oembed, > .item-video {
