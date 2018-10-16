@@ -10,38 +10,36 @@
  * always reference $ with $, even when in .noConflict() mode.
  * ======================================================================== */
 
-(function($) {
+(function ($) {
 
   var MAIN = {};
 
-  MAIN.setMenu = function()
-  {
+  MAIN.setMenu = function () {
     var m = $('#icon-menu'),
-        d = $('.dropdown-toggle'),
-        n = $('.nav-primary'),
-        w = $(window),
-        b = $('body');
+      d = $('.dropdown-toggle'),
+      n = $('.nav-primary'),
+      w = $(window),
+      b = $('body');
 
-    m.on('click', function() {
-		  $(this).toggleClass('is-open');
+    m.on('click', function () {
+      $(this).toggleClass('is-open');
       n.toggleClass('is-open');
       b.toggleClass('is-fixed');
       return false;
-	  });
+    });
 
-    d.on('click', function(){
+    d.on('click', function () {
       $(this).parent('.dropdown').toggleClass('open');
       return false;
     });
   };
 
-  MAIN.setIas = function()
-  {
+  MAIN.setIas = function () {
     var ias = $.ias({
-      container:      '.works-body',
-      item:           '.works-item',
-      pagination:     '.pagination',
-      next:           '.nav-links .next',
+      container: '.works-body',
+      item: '.works-item',
+      pagination: '.pagination',
+      next: '.nav-links .next',
       negativeMargin: 600
     });
 
@@ -54,13 +52,12 @@
     }));
   };
 
-  MAIN.setIasArticle = function()
-  {
+  MAIN.setIasArticle = function () {
     var ias = $.ias({
-      container:      '.entry-container',
-      item:           '.entry-body',
-      pagination:     '.pagination',
-      next:           '.next-works',
+      container: '.entry-container',
+      item: '.entry-body',
+      pagination: '.pagination',
+      next: '.next-works',
       negativeMargin: 600
     });
 
@@ -73,35 +70,51 @@
     }));
   };
 
+  MAIN.setVideo = function () {
+    var i = $('.item-video');
+    i.each(function () {
+      console.log('setVideo');
+      var v = $(this).find('video');
+      v.on('click', function () {
+        if ($(this)[0].paused) {
+          $(this)[0].play();
+        } else {
+          $(this)[0].pause();
+        }
+      });
+    });
+  };
+
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
   var STUDIOPT = {
     'common': {
-      init: function() {
+      init: function () {
         MAIN.setMenu();
       },
-      finalize: function() {
+      finalize: function () {
       }
     },
     'home': {
-      init: function() {
+      init: function () {
         MAIN.setIas();
       },
-      finalize: function() {
+      finalize: function () {
       }
     },
     'post_type_archive': {
-      finalize: function() {
+      finalize: function () {
         MAIN.setIas();
       }
     },
     'single_works': {
-      finalize: function() {
+      finalize: function () {
         MAIN.setIasArticle();
+        MAIN.setVideo();
       }
     },
     'contact': {
-      init: function() {
+      init: function () {
       }
     }
   };
@@ -109,7 +122,7 @@
   // The routing fires all common scripts, followed by the page specific scripts.
   // Add additional events for more control over timing e.g. a finalize event
   var UTIL = {
-    fire: function(func, funcname, args) {
+    fire: function (func, funcname, args) {
       var fire;
       var namespace = STUDIOPT;
       funcname = (funcname === undefined) ? 'init' : funcname;
@@ -121,12 +134,12 @@
         namespace[func][funcname](args);
       }
     },
-    loadEvents: function() {
+    loadEvents: function () {
       // Fire common init JS
       UTIL.fire('common');
 
       // Fire page-specific init JS, and then finalize JS
-      $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function(i, classnm) {
+      $.each(document.body.className.replace(/-/g, '_').split(/\s+/), function (i, classnm) {
         UTIL.fire(classnm);
         UTIL.fire(classnm, 'finalize');
       });

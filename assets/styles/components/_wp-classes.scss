@@ -52,3 +52,9 @@
 .wp-video {
   margin-bottom: $line-height-computed;
 }
+
+.wp-editor {
+  a {
+    text-decoration: underline;
+  }
+}

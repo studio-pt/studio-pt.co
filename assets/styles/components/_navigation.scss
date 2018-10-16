@@ -55,6 +55,10 @@
   right: $grid-gutter-width;
   z-index: 99;
   text-align: left;
+  @media (min-width: 1920px) {
+    right: 50%;
+    margin-right: calc(-960px + #{$grid-gutter-width)};
+  }
   @media (max-width: $screen-sm) {
     text-align: center;
     display: none;
@@ -196,7 +200,8 @@
   &,
   &:hover,
   &:focus {
-    font-weight: bold;
+    font-family: 'Untitled Medium', 'Helvetica', 'Arial', '中ゴシックBBB', 'Gothic Medium BBB', '游ゴシック体', 'Yu Gothic', YuGothic, sans-serif;
+    font-weight: normal;
   }
 }
 
