@@ -88,7 +88,7 @@
                 $poster = get_sub_field('poster');
                 echo '<div class="entry-item">';
                 echo '<div class="item-video">';
-                echo '<video poster="' . $poster['sizes']['large'] . '" muted autoplay loop>';
+                echo '<video poster="' . $poster['sizes']['large'] . '" playsinline muted autoplay loop>';
                 echo '<source src="' . $video['url'] . '" type="' . $video['mime_type'] . '">';
                 echo '</video>';
                 echo '</div>';
