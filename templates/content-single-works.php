@@ -9,19 +9,23 @@
         </div>
         <?php
           $terms = get_the_terms($post->ID, 'c');
-          echo '<ul class="entry-categories">';
-          foreach ($terms as $term) :
-            echo '<li><a href="' . get_term_link($term) . '">'.$term->name.'</a></li>';
-          endforeach;
-          echo '</ul>';
+          if ($terms):
+            echo '<ul class="entry-categories">';
+            foreach ($terms as $term) :
+              echo '<li><a href="' . get_term_link($term) . '">'.$term->name.'</a></li>';
+            endforeach;
+            echo '</ul>';
+          endif;
         ?>
         <?php
           $terms = get_the_terms($post->ID, 't');
-          echo '<ul class="entry-taxonomies">';
-          foreach ($terms as $term) :
-            echo '<li><a href="' . get_term_link($term) . '">'.$term->name.'</a></li>';
-          endforeach;
-          echo '</ul>';
+          if ($terms):
+            echo '<ul class="entry-taxonomies">';
+            foreach ($terms as $term) :
+              echo '<li><a href="' . get_term_link($term) . '">'.$term->name.'</a></li>';
+            endforeach;
+            echo '</ul>';
+          endif;
         ?>
       </header>
       <div class="entry-content">
