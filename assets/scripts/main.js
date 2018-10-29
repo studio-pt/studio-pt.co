@@ -39,7 +39,7 @@
       n = $('.nav-primary'),
       w = $(window),
       b = $('body'),
-      h = vh(100) - 85;
+      h = vh(100) - (85 * 2);
 
     m.on('click', function () {
       $(this).toggleClass('is-open');
