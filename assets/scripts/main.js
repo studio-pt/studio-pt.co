@@ -15,11 +15,31 @@
   var MAIN = {};
 
   MAIN.setMenu = function () {
+
+    var vh = function (v) {
+      var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      return (v * h) / 100;
+    };
+
+    var vw = function (v) {
+      var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      return (v * w) / 100;
+    };
+
+    var vmin = function (v) {
+      return Math.min(vh(v), vw(v));
+    };
+
+    var vmax = function (v) {
+      return Math.max(vh(v), vw(v));
+    };
+
     var m = $('#icon-menu'),
       d = $('.dropdown-toggle'),
       n = $('.nav-primary'),
       w = $(window),
-      b = $('body');
+      b = $('body'),
+      h = vh(100) - 85;
 
     m.on('click', function () {
       $(this).toggleClass('is-open');
@@ -30,6 +50,10 @@
 
     d.on('click', function () {
       $(this).parent('.dropdown').toggleClass('open');
+      var mh = $('#menu-primary').height();
+      if (mh > h) {
+        n.toggleClass('is-constrained');
+      }
       return false;
     });
   };

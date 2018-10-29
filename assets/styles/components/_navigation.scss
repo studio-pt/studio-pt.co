@@ -57,7 +57,7 @@
   text-align: left;
   @media (min-width: 1920px) {
     right: 50%;
-    margin-right: calc(-960px + #{$grid-gutter-width)};
+    margin-right: calc(-960px + #{$grid-gutter-width});
   }
   @media (max-width: $screen-sm) {
     text-align: center;
@@ -75,10 +75,29 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 10;
         > li {
           display: block;
           margin: 0;
           padding: 1rem 0;
+        }
+      }
+      &.is-constrained {
+        height: 100vh;
+        overflow-y: scroll;
+        position: relative;
+        top: initial;
+        top: auto;
+        right: initial;
+        right: auto;
+        > .nav {
+          position: static;
+          transform: none;
+          top: initial;
+          top: auto;
+          left: initial;
+          left: auto;
+          padding: 8.5rem 0 6rem;
         }
       }
     }
@@ -220,6 +239,6 @@
 
 #menu-primary {
   @media (max-width: $screen-xs-max) {
-    min-width: $screen-xs-max;
+    //min-width: $screen-xs-max;
   }
 }
