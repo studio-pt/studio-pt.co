@@ -51,7 +51,10 @@
 
 .nav-primary {
   position: fixed;
-  top: 2.2rem;
+  top: 1.2rem;
+  @media (min-width: $screen-sm-min) {
+    top: 2.2rem;
+  }
   right: $grid-gutter-width;
   z-index: 99;
   text-align: left;
@@ -121,7 +124,10 @@
 
 #icon-menu {
   position: fixed;
-  top: 30px;
+  top: 2rem;
+  @media (min-width: $screen-sm-min) {
+    top: 3rem;
+  }
   right: $grid-gutter-width / 2;
   z-index: 999;
   width: 24px;

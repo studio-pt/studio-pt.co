@@ -25,7 +25,10 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   position: relative;
   z-index: 1;
-  padding-top: 10rem;
+  padding-top: 6.5rem;
+  @media (min-width: $screen-sm-min) {
+    padding-top: 8.5rem;
+  }
 }
 
 .wrap {
